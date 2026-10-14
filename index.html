@@ -24,7 +24,7 @@
   --font: "Countach", "Arial Narrow", Impact, sans-serif;
 }
 * { box-sizing: border-box; }
-html, body { margin: 0; height: 100%; background: var(--navy); overflow: hidden; }
+html, body { margin: 0; height: 100%; height: 100dvh; background: var(--navy); overflow: hidden; }
 body { font-family: var(--font); color: #fff; display: flex; flex-direction: column; }
 [hidden] { display: none !important; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
@@ -37,8 +37,11 @@ img { display: block; }
 .nav .tabs-top button { padding: 6px 14px; font: 700 18px var(--font); color: #9aa0ad; border: 2px solid transparent; white-space: nowrap; clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%); }
 .nav .tabs-top button[aria-selected="true"] { color: var(--ink); background: var(--gold); }
 .nav .note { margin-left: auto; font: 400 14px var(--font); color: #6b6d75; white-space: nowrap; }
-.viewport { position: relative; flex: 1; min-height: 0; display: grid; place-items: center; overflow: hidden; }
-.stage { position: relative; width: 1600px; height: 900px; overflow: hidden; transform-origin: center; flex: none; background: #000; }
+@media (max-height: 520px) { .nav { padding: 3px 10px; gap: 10px; } .nav h1 { font-size: 15px; } .nav .tabs-top button { padding: 3px 10px; font-size: 14px; } }
+.viewport { position: relative; flex: 1; min-height: 0; overflow: hidden; }
+.stage { position: absolute; left: 50%; top: 50%; width: 1600px; height: 900px; overflow: hidden; transform-origin: center; transform: translate(-50%, -50%); background: #000; }
+.turn-hint { display: none; position: absolute; left: 0; right: 0; bottom: 16px; text-align: center; font: 400 15px var(--font); color: #6b6d75; }
+@media (orientation: portrait) and (max-width: 900px) { .turn-hint { display: block; } }
 .concept, .view { position: absolute; inset: 0; }
 
 .back-btn { position: absolute; left: 24px; top: 20px; z-index: 5; }
@@ -593,7 +596,7 @@ img { display: block; }
     </div>
   </div>
   <div class="toast" id="toast" hidden></div>
-</div></div>
+</div><div class="turn-hint">Turn your phone sideways for a bigger view</div></div>
 
 <script>
 const DATA = {"bosses":[{"key":"dueoksini","name":"Dueokshini","element":"power","portrait":"boss_dueoksini_portrait.webp","banner":"boss_dueoksini_banner.webp","thumb":"boss_dueoksini_thumb.webp","icons":["skill_Dueoksini_01.webp","skill_Dueoksini_02.webp","skill_Passive_BonusDamage.webp","skill_Passive_Buff_Attack.webp"]},{"key":"siren","name":"Siren","element":"bio","portrait":"boss_siren_portrait.webp","banner":"boss_siren_banner.webp","thumb":"boss_siren_thumb.webp","icons":["skill_Siren_SoundWave.webp","skill_Siren_SideAttack.webp","skill_Siren_Shh.webp","skill_Siren_Debuff.webp"]},{"key":"djmadu","name":"DJ Madu","element":"network","portrait":"boss_djmadu_portrait.webp","banner":"boss_djmadu_banner.webp","thumb":"boss_djmadu_thumb.webp","icons":["skill_Madu_Active1.webp","skill_Madu_Active2.webp","skill_Madu_Active3.webp","skill_Madu_Shield.webp"]},{"key":"repo13","name":"Collection No. 13","element":"network","portrait":"boss_repo13_portrait.webp","banner":"boss_repo13_banner.webp","thumb":"boss_repo13_thumb.webp","icons":["skill_Drax_Active.webp","skill_Passive_Debuff_Defense.webp","skill_Passive_Buff_Attack.webp","skill_Passive_Counter.webp"]},{"key":"manekin","name":"Hungry Manekin Second Phase","element":"power","portrait":"boss_manekin_portrait.webp","banner":"boss_manekin_banner.webp","thumb":"boss_manekin_thumb.webp","icons":["skill_Passive_BonusDamage.webp","skill_Passive_Spread.webp","skill_Passive_Heal.webp","skill_Passive_DamageReduce.webp"]},{"key":"navii","name":"Navii Commander","element":"power","portrait":"boss_navii_portrait.webp","banner":"boss_navii_banner.webp","thumb":"boss_navii_thumb.webp","icons":["skill_NaviiCommander_Active.webp","skill_Passive_Shield.webp","skill_Passive_Debuff_Attack.webp","skill_Passive_Reflect.webp"]}],"roster":[{"id":1000000,"name":"Hyde","tier":"XA","class":"Slaughter","element":"electrical","thumbnail":"Thumbnail_Wide_Hyde.webp","art":"art_Hyde.webp"},{"id":1000006,"name":"Lain","tier":"XA","class":"Slaughter","element":"plasma","thumbnail":"Thumbnail_Wide_Lain.webp","art":"art_Lain.webp"},{"id":1000002,"name":"Muro","tier":"XA","class":"Jacker","element":"network","thumbnail":"Thumbnail_Wide_Muro.webp","art":"art_Muro.webp"},{"id":1000003,"name":"Drax","tier":"XA","class":"Vanguard","element":"power","thumbnail":"Thumbnail_Wide_Drax.webp","art":"art_Drax.webp"},{"id":1000005,"name":"Hyki","tier":"XA","class":"Jacker","element":"chemical","thumbnail":"Thumbnail_Wide_Hyki.webp","art":"art_Hyki.webp"},{"id":1000001,"name":"Rem","tier":"XA","class":"Rewinder","element":"bio","thumbnail":"Thumbnail_Wide_Rem.webp","art":"art_Rem.webp"},{"id":1000010,"name":"Tsuki","tier":"XA","class":"Jacker","element":"power","thumbnail":"Thumbnail_Wide_Tsuki.webp","art":"art_Tsuki.webp"},{"id":1000012,"name":"Persa","tier":"XA","class":"Slaughter","element":"plasma","thumbnail":"Thumbnail_Wide_Persa.webp","art":"art_Persa.webp"},{"id":1000017,"name":"Hayden","tier":"XA","class":"Slaughter","element":"network","thumbnail":"Thumbnail_Wide_Hayden.webp","art":"art_Hayden.webp"},{"id":1000021,"name":"Morgan","tier":"XA","class":"Rewinder","element":"bio","thumbnail":"Thumbnail_Wide_Morgan.webp","art":"art_Morgan.webp"},{"id":1000033,"name":"Soll","tier":"XA","class":"Slaughter","element":"plasma","thumbnail":"Thumbnail_Wide_Soll.webp","art":"art_Soll.webp"},{"id":1000041,"name":"Ari","tier":"XA","class":"Vanguard","element":"chemical","thumbnail":"Thumbnail_Wide_Ari.webp","art":"art_Ari.webp"},{"id":1000028,"name":"Baeksa","tier":"XA","class":"Rewinder","element":"plasma","thumbnail":"Thumbnail_Wide_Baeksa.webp","art":"art_Baeksa.webp"},{"id":1000004,"name":"Verdorman","tier":"X","class":"Vanguard","element":"bio","thumbnail":"Thumbnail_Wide_Verdorman.webp","art":"art_Verdorman.webp"},{"id":1000007,"name":"Lilly","tier":"X","class":"Jacker","element":"chemical","thumbnail":"Thumbnail_Wide_Lilly.webp","art":"art_Lilly.webp"},{"id":1000008,"name":"Ru","tier":"X","class":"Rewinder","element":"plasma","thumbnail":"Thumbnail_Wide_Ru.webp","art":"art_Ru.webp"},{"id":1000009,"name":"Sean Terry","tier":"X","class":"Vanguard","element":"plasma","thumbnail":"Thumbnail_Wide_Terry.webp","art":"art_Terry.webp"},{"id":1000018,"name":"Reyna","tier":"X","class":"Jacker","element":"power","thumbnail":"Thumbnail_Wide_Reyna.webp","art":"art_Reyna.webp"},{"id":1000042,"name":"Hugo","tier":"X","class":"Slaughter","element":"electrical","thumbnail":"Thumbnail_Wide_Hugo.webp","art":"art_Hugo.webp"},{"id":1000043,"name":"Zero-P","tier":"X","class":"Vanguard","element":"bio","thumbnail":"Thumbnail_Wide_ZeroP.webp","art":"art_ZeroP.webp"},{"id":1000044,"name":"Tyra","tier":"X","class":"Slaughter","element":"network","thumbnail":"Thumbnail_Wide_Tyra.webp","art":"art_Tyra.webp"},{"id":1000047,"name":"Yasha","tier":"X","class":"Jacker","element":"power","thumbnail":"Thumbnail_Wide_Yasha.webp","art":"art_Yasha.webp"},{"id":1000049,"name":"Nataliya","tier":"X","class":"Rewinder","element":"electrical","thumbnail":"Thumbnail_Wide_Nataliya.webp","art":"art_Nataliya.webp"},{"id":1000025,"name":"Mother","tier":"X","class":"Rewinder","element":"plasma","thumbnail":"Thumbnail_Wide_Mother.webp","art":"art_Mother.webp"},{"id":1000050,"name":"Mou","tier":"XA","class":"Rewinder","element":"electrical","thumbnail":"Thumbnail_Wide_Mou.webp","art":"art_Mou.webp"},{"id":1000046,"name":"Kirill","tier":"S","class":"Slaughter","element":"electrical","thumbnail":"Thumbnail_Wide_Kirill.webp","art":"art_Kirill.webp"},{"id":1000048,"name":"Mighty","tier":"S","class":"Vanguard","element":"chemical","thumbnail":"Thumbnail_Wide_Mighty.webp","art":"art_Mighty.webp"},{"id":1000052,"name":"Lin Qiang","tier":"S","class":"Vanguard","element":"power","thumbnail":"Thumbnail_Wide_LinQiang.webp","art":"art_LinQiang.webp"},{"id":1000054,"name":"Andrew","tier":"X","class":"Slaughter","element":"network","thumbnail":"Thumbnail_Wide_Andrew.webp","art":"art_Andrew.webp"},{"id":1000085,"name":"Marcus","tier":"S","class":"Vanguard","element":"network","thumbnail":"Thumbnail_Wide_Marcus.webp","art":"art_Marcus.webp"}]};
@@ -863,9 +866,11 @@ function switchMode(key) {
 function fitStage() {
   const vp = $('.viewport');
   const s = Math.min(vp.clientWidth / 1600, vp.clientHeight / 900);
-  $('#stage').style.transform = `scale(${s})`;
+  $('#stage').style.transform = `translate(-50%, -50%) scale(${s})`;
 }
 addEventListener('resize', fitStage);
+addEventListener('orientationchange', () => setTimeout(fitStage, 200));
+if (window.ResizeObserver) new ResizeObserver(fitStage).observe($('.viewport'));
 setInterval(() => TICKERS.forEach(fn => fn()), 1000);
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
