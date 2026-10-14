@@ -385,6 +385,9 @@ img { display: block; }
 .emblem svg { width: 170px; height: 170px; filter: drop-shadow(4px 4px 0 rgba(0,0,0,.45)); }
 .emblem b { font: 700 24px var(--font); background: #2a1014; padding: 2px 20px; }
 .emblem.big svg { width: 210px; height: 210px; }
+.emblem.mini { flex-direction: row; gap: 12px; }
+.emblem.mini svg { width: 64px; height: 64px; }
+.emblem.mini b { font-size: 22px; color: #fff; white-space: nowrap; }
 .lg-tiers .arrow { font: 700 50px var(--font); color: var(--gold); }
 .lg-score { display: flex; justify-content: space-between; width: 100%; font: 700 28px var(--font); padding: 0 30px; }
 .lineup { width: 100%; background: rgba(0,0,0,.25); border-top: 2px solid rgba(241,217,138,.5); padding: 10px 14px; display: flex; flex-direction: column; gap: 8px; }
@@ -501,7 +504,7 @@ img { display: block; }
     <div class="view co-main">
       <div class="wb-top"><button class="back-btn" type="button" data-act="back"><img src="assets/BackBTN.png" alt="Back"></button></div>
       <div class="co-wallet"><button type="button" data-act="co-attempts" class="co-attempts"></button>
-        <div class="coin"><img src="assets/InfinityLicenseTicket.webp" alt="Raid Key"><span class="co-keys"></span><button type="button" data-act="co-key" style="margin-left:10px;font-size:26px">+</button></div></div>
+        <div class="coin"><img src="assets/InfinityLicenseTicket.webp" alt="Raid Entry Ticket"><span class="co-keys"></span><button type="button" data-act="co-key" style="margin-left:10px;font-size:26px">+</button></div></div>
       <div class="co-list"></div>
       <div class="co-icons">
         <button type="button" data-act="co-rank" title="Rankings"><span class="dock-ic"><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 21h8M10 17h4v4h-4z"/></svg></span></button>
@@ -539,13 +542,13 @@ img { display: block; }
       </div>
       <div class="lg-right">
         <div class="lg-bar"><span><button type="button" data-act="lg-zones" class="round" style="width:40px;height:40px;font-size:20px;margin-right:16px;vertical-align:middle"><span>!</span></button><span class="lg-attempts"></span> <span class="regen"></span></span>
-          <div class="coin"><img src="assets/Currency_LeaguePoint.webp" alt="League Points"><span class="lg-points"></span></div></div>
+          <div class="coin"><img src="assets/Currency_LeaguePoint.webp" alt="GFC Points"><span class="lg-points"></span></div></div>
         <div class="lg-list"></div>
         <div class="lg-bottom">
           <button class="effects" type="button" data-act="lg-effects"><span class="ic">✸</span>Season Effects</button>
           <div class="lg-dock">
             <button type="button" data-act="lg-records" title="Records"><span class="dock-ic"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h3"/></svg></span></button>
-            <button type="button" data-act="lg-shop" title="Ranked Match Shop"><span class="dock-ic"><svg viewBox="0 0 24 24"><path d="M3 4h3l2.4 11h9.6L21 7H7"/><circle cx="10" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg></span></button>
+            <button type="button" data-act="lg-shop" title="GFC Shop"><span class="dock-ic"><svg viewBox="0 0 24 24"><path d="M3 4h3l2.4 11h9.6L21 7H7"/><circle cx="10" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg></span></button>
             <button type="button" data-act="lg-rewards" title="Season Rewards"><span class="dock-ic"><svg viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11"/><path d="M4 13h16M12 9v11M12 9c-2-4-6-4-6-1.5S10 9 12 9c2 0 6 0 6-1.5S14 5 12 9"/></svg></span></button>
           </div>
         </div>
@@ -619,7 +622,7 @@ const weakTo = element => Object.keys(BEATS).find(k => BEATS[k] === element);
 const CLASS_ICONS = { Vanguard: 'Common_Icon_Class_Vangard.png', Jacker: 'Common_Icon_Class_Jacker.png', Rewinder: 'Common_Icon_Class_Rewinder.png', Slaughter: 'Common_Icon_Class_Slaughter.png' };
 const ITEMS = {
   medal: ['Currency_BossMedal.webp', 'Boss Medal'], oracle: ['Currency_Cash.png', 'Oracle'], packet: ['Currency_Packet.png', 'Packet'],
-  leaguePoint: ['Currency_LeaguePoint.webp', 'League Point'],
+  gfcPoint: ['Currency_LeaguePoint.webp', 'GFC Point'],
   exodium: ['ITEM_EQUIPMENT_LEVELUP_01.png', 'Exodium'], injector: ['ITEM_EQUIPMENT_LEVELUP_00.webp', 'Injector'], chip: ['ITEM_CHARACTER_LEVELUP_01.png', 'Battle Chip'],
   module: ['ITEM_SKILL_LEVELUP_NORMAL_02.png', 'Advanced Skill Module'], moduleMid: ['ITEM_SKILL_LEVELUP_SPECIAL_01.webp', 'Intermediate Skill Module'],
   core: ['ITEM_SKILL_LEVELUP_SPECIAL_02.webp', 'Skill Core'], license: ['ITEM_STAT_UPGRADE_INGREDIENT_LICENSE_BLUE.webp', 'Superior License'],
@@ -628,7 +631,7 @@ const ITEMS = {
   shardXA: ['ITEM_PIECE_COMMON_XA.webp', 'XA-Grade Shard'], ticket: ['ITEM_GACHA_S_XA.webp', 'S~XA Gacha Ticket'], ticketX: ['ITEM_GACHA_X_XA.webp', 'X~XA Gacha Ticket'],
   selectXA: ['ITEM_SELECT_XA.webp', 'XA Selection Ticket'], selectX: ['ITEM_SELECT_X.webp', 'X Selection Ticket'],
   code: ['CodeDungeonTicket.webp', 'Code Dungeon Entry Ticket'], firewall: ['FirewallTicket.webp', 'Firewall Entry Ticket'],
-  infinity: ['InfinityGeneralTicket.webp', 'Infinity Normal Entry Ticket'], raidKey: ['InfinityLicenseTicket.webp', 'Raid Key'],
+  infinity: ['InfinityGeneralTicket.webp', 'Infinity Normal Entry Ticket'], raidKey: ['InfinityLicenseTicket.webp', 'Raid Entry Ticket'],
   moldBlack: ['ITEM_GACHA_CHARACTER_EXCHANGE_01.webp', 'Black License Exclusive Mold'], moldBlue: ['ITEM_GACHA_CHARACTER_EXCHANGE_02.webp', 'Blue License Exclusive Mold'],
   moldPrism: ['ITEM_GACHA_CHARACTER_EXCHANGE_03.webp', 'Prism License Exclusive Mold'],
   draxShard: ['ITEM_PIECE_DRAX.webp', 'Drax Shard'], naviiShard: ['ITEM_PIECE_NAVIICOMMANDER.webp', 'Navii Commander Shard']
@@ -1354,7 +1357,7 @@ document.addEventListener('keydown', e => {
     renderLobby();
   }
   function challenge() {
-    if (st.attempts <= 0 && st.keys <= 0) return toast('No attempts or Raid Keys left.');
+    if (st.attempts <= 0 && st.keys <= 0) return toast('No attempts or Raid Entry Tickets left.');
     const members = st.party.filter(p => p && !p.pending);
     const go = () => {
       const d = DUNGEONS[st.pick];
@@ -1367,7 +1370,7 @@ document.addEventListener('keydown', e => {
       const lucky = Math.random() * 100 < rare;
       if (lucky) got.push(d.rewards[3]);
       st.records.unshift({ date: stamp(), lv: d.lv, grade, party: [ME.name, ...members.map(p => p.name)] });
-      showResult({ title: `${d.lv} CLEARED`, grade, line: `${members.length + 1}-player party · ${usedKey ? 'Raid Key used' : `Free attempts left ${st.attempts}/2`}${lucky ? ' · <span class="hl">Rare reward!</span>' : ''}<div style="display:flex;justify-content:center;margin-top:12px">${itemsHtml(got)}</div>`,
+      showResult({ title: `${d.lv} CLEARED`, grade, line: `${members.length + 1}-player party · ${usedKey ? 'Raid Entry Ticket used' : `Free attempts left ${st.attempts}/2`}${lucky ? ' · <span class="hl">Rare reward!</span>' : ''}<div style="display:flex;justify-content:center;margin-top:12px">${itemsHtml(got)}</div>`,
         onOk: renderLobby });
     };
     if (members.length < 2) confirmBox('Message', `Start with ${members.length + 1} player${members.length ? 's' : ''}? Empty slots lower the rating.`, go, 'Start');
@@ -1384,8 +1387,8 @@ document.addEventListener('keydown', e => {
       $('.co-main', root).hidden = true; $('.co-lobby', root).hidden = false; renderLobby();
     }
     else if (d.act === 'co-leave') { $('.co-lobby', root).hidden = true; $('.co-main', root).hidden = false; renderMain(); }
-    else if (d.act === 'co-key') toast('Raid Keys are sold in the GAO shop.');
-    else if (d.act === 'co-attempts') openPopup('Free Attempts', '<div class="content prose"><p>You get 2 free attempts a day. They reset at 05:00.</p><p>After that, each attempt uses 1 Raid Key. Helping a friend whose attempt it is costs you nothing.</p></div>', true);
+    else if (d.act === 'co-key') toast('Raid Entry Tickets are sold in the GAO Shop.');
+    else if (d.act === 'co-attempts') openPopup('Free Attempts', '<div class="content prose"><p>You get 2 free attempts a day. They reset at 05:00.</p><p>After that, each attempt uses 1 Raid Entry Ticket. Helping a friend whose attempt it is costs you nothing.</p></div>', true);
     else if (d.act === 'co-rating') openPopup('Rating', `<div class="content"><div class="tip"><b>Tips</b>Raise your rating for a better chance to get rare rewards.</div>${RATINGS.map(([g, , rare]) =>
       `<div class="row" style="grid-template-columns: 160px 1fr"><div>${gradeHtml(g, true)}</div><div class="dmg" style="font-size:24px">Rare reward chance ${rare}%</div></div>`).join('')}</div>`);
     else if (d.act === 'co-records') openPopup('Records', `<div class="content">${st.records.length ? st.records.map(r => `<div class="row" style="grid-template-columns: 260px 160px 1fr 100px"><div class="date">${r.date}</div><div class="dmg" style="font-size:24px">${r.lv}</div><div>${r.party.map(escapeHtml).join(', ')}</div>${gradeHtml(r.grade, true)}</div>`).join('') : '<div class="tip">No clears yet.</div>'}</div>`);
@@ -1435,20 +1438,20 @@ document.addEventListener('keydown', e => {
 
 (() => {
   const root = $('section[data-mode="league"]');
-  const TIERS = [['Bronze', '#b07a4a', '#5a3a1e'], ['Silver', '#c9ced8', '#5a606e'], ['Gold', '#f2c14e', '#8a5a12'], ['Platinum', '#7fe0d0', '#1f6a62'],
-    ['Diamond', '#9db8ff', '#2a3a8a'], ['Emperor', '#ff9a6b', '#7a1f2a']];
+  const TIERS = [['Underground', '#b07a4a', '#5a3a1e'], ['Midground', '#c9ced8', '#5a606e'], ['Higher Ground', '#f2c14e', '#8a5a12'],
+    ['Skyline', '#9db8ff', '#2a3a8a'], ['Tower', '#ff9a6b', '#7a1f2a']];
   const emblem = (tier, big = false) => {
     const [name, light, dark] = TIERS.find(t => t[0] === tier);
     return `<div class="emblem${big ? ' big' : ''}"><svg viewBox="0 0 100 100" aria-hidden="true">
       <path d="M50 4 L88 18 L84 62 Q78 84 50 96 Q22 84 16 62 L12 18 Z" fill="${dark}" stroke="#f1d98a" stroke-width="4"/>
       <path d="M50 14 L78 25 L75 60 Q70 77 50 86 Q30 77 25 60 L22 25 Z" fill="${light}" opacity=".9"/>
       <path d="M50 26 L56 44 L75 44 L60 55 L66 73 L50 62 L34 73 L40 55 L25 44 L44 44 Z" fill="#fff" stroke="${dark}" stroke-width="2"/>
-      ${tier === 'Emperor' ? '<path d="M30 8 L38 0 L50 8 L62 0 L70 8" fill="none" stroke="#f1d98a" stroke-width="4"/>' : ''}
+      ${tier === 'Tower' ? '<path d="M30 8 L38 0 L50 8 L62 0 L70 8" fill="none" stroke="#f1d98a" stroke-width="4"/>' : ''}
     </svg><b>${name}</b></div>`;
   };
   const NAMES = ['PUNinc', 'Tyzul', 'JosukeCD', 'XinTheReaper', null, 'Hyki_Main', 'SignetSam', 'OracleBroke', 'LakeLurker', 'GearHead'];
   const st = {
-    tier: 'Diamond', points: 28900, attempts: 10, regen: 2 * 3600 + 11 * 60 + 26, settle: 2 * 86400 + 2 * 3600, stock: {}, log: [],
+    tier: 'Skyline', points: 28900, attempts: 10, regen: 2 * 3600 + 11 * 60 + 26, settle: 2 * 86400 + 2 * 3600, stock: {}, log: [],
     lineups: [
       { ids: [1000006, 1000000, 1000003, 1000012, 1000001], captain: 1000006, formation: 'Offensive' },
       { ids: [1000002, 1000005, 1000017, 1000033, 1000041], captain: 1000017, formation: 'Balanced' }],
@@ -1464,7 +1467,7 @@ document.addEventListener('keydown', e => {
     const list = ranked();
     const myRank = list.findIndex(p => p.me) + 1;
     const zone = zoneOf(myRank);
-    const next = zone === 'up' ? TIERS[Math.min(5, tierIndex() + 1)][0] : zone === 'drop' ? TIERS[Math.max(0, tierIndex() - 1)][0] : st.tier;
+    const next = zone === 'up' ? TIERS[Math.min(TIERS.length - 1, tierIndex() + 1)][0] : zone === 'drop' ? TIERS[Math.max(0, tierIndex() - 1)][0] : st.tier;
     $('.lg-tiers', root).innerHTML = emblem(st.tier) + '<span class="arrow">➤</span>' + emblem(next, true);
     $('.lg-score', root).innerHTML = `<span>Ranking: ${myRank}</span><span>Score: ${st.players.find(p => p.me).score}</span>`;
     $$('.lineup', root).forEach((el, i) => {
@@ -1474,7 +1477,7 @@ document.addEventListener('keydown', e => {
     $('.lg-attempts', root).textContent = `Challenge Attempts: ${st.attempts}/12`;
     $('.lg-bar .regen', root).textContent = st.attempts < 12 ? `(${clock(st.regen)})` : '';
     $('.lg-points', root).textContent = short(st.points);
-    const up = TIERS[Math.min(5, tierIndex() + 1)][0];
+    const up = TIERS[Math.min(TIERS.length - 1, tierIndex() + 1)][0];
     const down = TIERS[Math.max(0, tierIndex() - 1)][0];
     let html = '';
     let lastZone = null;
@@ -1524,7 +1527,7 @@ document.addEventListener('keydown', e => {
     showResult({
       title: `ROUND 1 ${rounds[0] ? 'WIN' : 'LOSS'} · ROUND 2 ${rounds[1] ? 'WIN' : 'LOSS'}`,
       stampText: won === 2 ? 'VICTORY' : won === 1 ? 'DRAW' : 'DEFEAT', stampClass: won === 2 ? 'win' : won === 1 ? '' : 'lose', tone: won === 2 ? 'win' : won === 0 ? 'lose' : '',
-      line: `${vs}<div style="margin-top:14px">Score +${gain} · League Points +${won === 2 ? 120 : won === 1 ? 60 : 30}</div>`, onOk: render
+      line: `${vs}<div style="margin-top:14px">Score +${gain} · GFC Points +${won === 2 ? 120 : won === 1 ? 60 : 30}</div>`, onOk: render
     });
   }
 
@@ -1540,13 +1543,13 @@ document.addEventListener('keydown', e => {
       <p>Ranks 1–2 are promoted to the next tier. Ranks 3–8 stay. Ranks 9–10 drop a tier.</p><p>You can earn up to 30 score from each opponent per season.</p></div>`, true);
     else if (d.act === 'lg-records') openPopup('Battle Records', `<div class="content">${st.log.length ? st.log.map(r => `<div class="row" style="grid-template-columns: 260px 1fr 220px 120px"><div class="date">${r.date}</div><div class="dmg" style="font-size:24px">vs ${escapeHtml(r.name)}</div><div>${r.rounds.map(x => x ? 'WIN' : 'LOSS').join(' · ')}</div><div class="dmg" style="font-size:24px">+${r.gain}</div></div>`).join('') : '<div class="tip">No battles this season yet.</div>'}</div>`);
     else if (d.act === 'lg-rewards') openPopup('Season Rewards', `<div class="content"><div class="tip"><b>Tips</b>Rewards are sent by mail when the season settles, based on your final tier.</div>${TIERS.slice().reverse().map(([name], i) =>
-      `<div class="row" style="grid-template-columns: 200px 1fr">${emblem(name).replace('class="emblem"', 'class="emblem" style="transform:scale(.55);height:120px"')}${itemsHtml([['leaguePoint', 3000 - i * 450], ['oracle', 500 - i * 80], ['license', 40 - i * 6], ...(i < 2 ? [['shardXA', 6 - i * 3]] : [])])}</div>`).join('')}</div>`);
-    else if (d.act === 'lg-shop') openShop({ title: 'Ranked Match Shop', currency: 'leaguePoint', timer: '18d 2h', stock: st.stock, getBalance: () => st.points, spend: n => { st.points -= n; render(); },
+      `<div class="row" style="grid-template-columns: 200px 1fr">${emblem(name).replace('class="emblem"', 'class="emblem mini"')}${itemsHtml([['gfcPoint', 3000 - i * 450], ['oracle', 500 - i * 80], ['license', 40 - i * 6], ...(i < 2 ? [['shardXA', 6 - i * 3]] : [])])}</div>`).join('')}</div>`);
+    else if (d.act === 'lg-shop') openShop({ title: 'GFC Shop', currency: 'gfcPoint', timer: '18d 2h', stock: st.stock, getBalance: () => st.points, spend: n => { st.points -= n; render(); },
       goods: [['moldPrism', 20, 2100, 'red'], ['license', 10, 840, 'gold'], ['core', 5, 2100, 'red'], ['raidKey', 10, 2100], ['firewall', 5, 9800, 'gold'], ['code', 5, 9800, 'gold'],
         ['infinity', 5, 9800, 'gold'], ['moduleMid', 4, 9800], ['module', 4, 9800], ['ticketX', 2, 24500, 'gold'], ['selectX', 2, 24500, 'gold'], ['shardXA', 60, 1050, 'gold']] });
     else if (d.act === 'back') toast('Returns to the lobby.');
     else if (d.act === 'lg-help') openPopup('GFC League', `<div class="content prose"><p>Set two lineups. Each challenge is two rounds: lineup 1 against their lineup 1, lineup 2 against their lineup 2.</p>
-      <p>Win both rounds for the most score. A draw still earns a little. Higher-ranked opponents are worth more.</p><p>League Points from every battle buy items in the Ranked Match Shop.</p></div>`);
+      <p>Win both rounds for the most score. A draw still earns a little. Higher-ranked opponents are worth more.</p><p>GFC Points from every battle buy items in the GFC Shop.</p></div>`);
   });
   TICKERS.push(() => {
     st.settle = Math.max(0, st.settle - 1);
