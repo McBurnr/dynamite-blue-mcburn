@@ -424,6 +424,125 @@ img { display: block; }
 .vsbox .side .team img { width: 90px; height: 64px; }
 .vsbox img.vs { width: 120px; height: auto; }
 
+/* Deep Layer */
+.dl-view { position: absolute; inset: 0; }
+.dl-entry { background: linear-gradient(90deg, rgba(10,12,20,.15), rgba(20,14,40,.9) 72%), url("assets/bg_deep_entry.webp") center / cover; }
+.dl-title { position: absolute; left: 70px; bottom: 90px; }
+.dl-title b { display: block; font: 700 italic 120px/1 var(--font); color: #fff; text-shadow: 6px 6px 0 #7a1f2a, 0 0 30px rgba(224,82,94,.6); }
+.dl-title span { display: inline-block; margin-top: 6px; padding: 2px 22px; font: 700 italic 34px var(--font); color: #ff9aa3; background: linear-gradient(90deg, #1e4f9a, transparent); }
+.dl-title small { display: block; margin-top: 10px; font: 400 22px var(--font); color: #c6cad3; }
+.dl-side { position: absolute; right: 70px; top: 70px; width: 560px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.dl-dial { display: flex; align-items: center; gap: 30px; }
+.dl-dial button { font: 700 50px var(--font); color: var(--gold); width: 60px; }
+.dl-dial button[disabled] { opacity: .25; cursor: not-allowed; }
+.dl-dial .ring { width: 190px; height: 190px; border-radius: 50%; border: 8px double #b08a3a; display: grid; place-items: center; background: radial-gradient(circle, #2a1a2e, #120c18); box-shadow: 0 0 30px rgba(224,82,94,.35); }
+.dl-dial .ring b { font: 700 italic 96px/1 var(--font); color: #ff5a6a; text-shadow: 3px 3px 0 #000; }
+.dl-dial-label { font: 700 30px var(--font); padding: 2px 40px; background: #120c18; border: 2px solid #3a2a40; border-radius: 20px; }
+.dl-track { display: flex; gap: 6px; align-items: center; padding: 14px 20px; background: rgba(10,8,20,.7); border: 2px solid #3a2a40; }
+.dl-track i { width: 14px; height: 14px; transform: rotate(45deg); background: #3a3546; }
+.dl-track i.big { width: 22px; height: 22px; }
+.dl-track i.on { background: var(--gold); }
+.dl-track i.cur { outline: 3px solid #ff5a6a; outline-offset: 2px; }
+.dl-best { font: 400 22px var(--font); color: #c6cad3; }
+.dl-rw-label { align-self: stretch; font: 400 24px var(--font); color: #c6bfe0; border-bottom: 2px solid #3a2a40; padding-bottom: 4px; }
+.dl-rewards { display: flex; gap: 12px; align-self: stretch; }
+.dl-rewards .item.first b { position: absolute; top: -14px; left: -2px; right: -2px; font: 700 14px var(--font); background: #c8642a; color: #fff; text-align: center; }
+.dl-rewards .item.first { border-color: #c9a24a; }
+.dl-map { background: linear-gradient(180deg, #1c2a4a 0%, #1a1a2e 40%, #2a1420 75%, #3a0d14 100%); }
+.dl-hud, .dl-bhud, .dl-rhud { position: absolute; left: 220px; right: 20px; top: 16px; height: 62px; z-index: 5; display: flex; gap: 18px; align-items: center; padding: 0 16px; background: rgba(10,8,20,.85); border: 2px solid #3a2a40; }
+.dl-hp { display: flex; gap: 10px; align-items: center; font: 700 22px var(--font); }
+.dl-hp .dl-bar { width: 240px; height: 18px; background: #3a2a2e; border: 2px solid #000; }
+.dl-hp .dl-bar i { display: block; height: 100%; background: linear-gradient(90deg, #c8424f, #ff7a6a); }
+.dl-diff { font: 700 22px var(--font); color: #ff9aa3; }
+.dl-slots { margin-left: auto; display: flex; gap: 6px; align-items: center; max-width: 620px; overflow: hidden; }
+.dl-slots .empty { font: 400 18px var(--font); color: #6b6d75; }
+.dl-slot { width: 46px; height: 46px; flex: none; border-radius: 50%; background: radial-gradient(circle, #2a3a6a, #121828); border: 2px solid #6a8fd8; display: grid; place-items: center; font: 700 26px var(--font); color: #c6cad3; }
+.dl-slot img { width: 30px; height: 30px; image-rendering: pixelated; }
+.dl-slot.empty { border-style: dashed; }
+.dl-abandon { position: absolute; right: 20px; bottom: 16px; z-index: 5; }
+.dl-map-scroll { position: absolute; left: 0; right: 0; top: 90px; bottom: 0; overflow-y: auto; }
+.dl-map-inner { position: relative; width: 1600px; }
+.dl-band { position: absolute; left: 160px; right: 160px; border-top: 2px dashed rgba(241,217,138,.25); }
+.dl-band span { position: absolute; left: -130px; top: 8px; font: 700 italic 26px var(--font); color: rgba(241,217,138,.7); writing-mode: horizontal-tb; }
+.dl-lines { position: absolute; left: 0; top: 0; width: 1600px; height: 100%; }
+.dl-lines line { stroke: rgba(200,190,230,.25); stroke-width: 4; stroke-dasharray: 2 10; stroke-linecap: round; }
+.dl-lines line.walked { stroke: var(--gold); stroke-dasharray: none; opacity: .8; }
+.dl-node { position: absolute; width: 64px; height: 64px; transform: translate(-50%, -50%); border-radius: 50%; background: #2a2a3a; border: 3px solid #555a6a; display: grid; place-items: center; opacity: .55; transition: transform .12s ease; }
+.dl-node svg { width: 34px; height: 34px; fill: none; stroke: #c6cad3; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.dl-node.elite { background: #4a1a24; } .dl-node.elite svg { stroke: #ff9aa3; }
+.dl-node.event { background: #1e3a5a; } .dl-node.event svg { stroke: #9fe6ff; }
+.dl-node.rest { background: #3a2e14; } .dl-node.rest svg { stroke: #ffd36a; }
+.dl-node.shop { background: #1e3a2a; } .dl-node.shop svg { stroke: #8ff0b6; }
+.dl-node.boss { width: 110px; height: 110px; background: radial-gradient(circle, #7a1f2a, #2a0a10); border-color: #ff5a6a; opacity: .9; }
+.dl-node.boss svg { width: 60px; height: 60px; stroke: #ffd36a; }
+.dl-node.open { opacity: 1; border-color: var(--gold); box-shadow: 0 0 18px rgba(241,217,138,.7); animation: dlpulse 1.2s ease-in-out infinite; }
+.dl-node.open:hover { transform: translate(-50%, -50%) scale(1.15); }
+.dl-node.visited { opacity: .9; border-color: var(--gold); }
+.dl-node.here { box-shadow: 0 0 0 4px #fff, 0 0 20px #fff; }
+.dl-node:not(.open) { cursor: default; }
+@keyframes dlpulse { 50% { box-shadow: 0 0 30px rgba(241,217,138,1); } }
+.dl-legend { position: absolute; left: 20px; bottom: 16px; z-index: 5; width: 180px; padding: 8px 12px; background: rgba(10,8,20,.85); border: 2px solid #3a2a40; display: flex; flex-direction: column; gap: 4px; font: 400 17px var(--font); }
+.dl-legend span { display: flex; gap: 8px; align-items: center; }
+.dl-legend svg { width: 22px; height: 22px; fill: none; stroke: #c6cad3; stroke-width: 2; }
+.dl-battle { background-size: cover; background-position: center; }
+.dl-team { position: absolute; left: 60px; top: 150px; display: flex; flex-direction: column; gap: 10px; }
+.dl-agent { position: relative; width: 190px; height: 110px; border: 3px solid #6a8fd8; overflow: hidden; background: #111; }
+.dl-agent img { width: 100%; height: 100%; object-fit: cover; object-position: 35% 20%; }
+.dl-agent span { position: absolute; left: 0; right: 0; bottom: 0; padding: 2px 8px; font: 700 18px var(--font); background: rgba(10,10,14,.8); }
+.dl-enemies { position: absolute; right: 60px; top: 160px; width: 1000px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-end; }
+.dl-enemy { position: relative; width: 300px; display: flex; flex-direction: column; gap: 6px; transition: opacity .3s ease, filter .3s ease; }
+.dl-enemy img { width: 300px; height: 230px; object-fit: cover; object-position: center 20%; border: 3px solid #c8424f; background: #111; }
+.dl-enemy.boss { width: 640px; } .dl-enemy.boss img { width: 640px; height: 400px; object-fit: contain; border-color: #ff5a6a; }
+.dl-enemy b { font: 700 22px var(--font); text-shadow: 2px 2px 0 #000; }
+.dl-enemy .dl-bar { height: 14px; background: #3a2a2e; border: 2px solid #000; }
+.dl-enemy .dl-bar i { display: block; height: 100%; background: linear-gradient(90deg, #e0525e, #ff9a6b); }
+.dl-enemy.down { opacity: .35; filter: grayscale(1); }
+.dl-float { position: absolute; top: 40%; font: 700 italic 34px var(--font); color: #fff; text-shadow: 3px 3px 0 #000; pointer-events: none; animation: dlfloat .7s ease-out forwards; }
+.dl-float.crit { color: #ffd36a; font-size: 46px; }
+@keyframes dlfloat { to { transform: translateY(-80px); opacity: 0; } }
+.dl-wave { position: absolute; left: 50%; top: 96px; transform: translateX(-50%); font: 700 italic 40px var(--font); color: var(--gold); text-shadow: 3px 3px 0 #000; }
+.dl-boss-banner { position: absolute; left: 0; right: 0; top: 760px; height: 40px; background: url("assets/Battle_Skill_Boss_Policeline.webp") center / auto 100% repeat-x; }
+.dl-skip { position: absolute; right: 40px; bottom: 30px; }
+.dl-offer { background: radial-gradient(circle at 50% 40%, rgba(245,200,110,.35), rgba(30,24,40,.95) 70%), url("assets/bg_battle_mid_desertedfactory.webp") center / cover; }
+.dl-offer-title { position: absolute; left: 0; right: 0; top: 50px; text-align: center; font: 700 italic 44px var(--font); color: #fff; text-shadow: 3px 3px 0 #000; }
+.dl-cards { position: absolute; left: 0; right: 0; top: 130px; display: flex; gap: 60px; justify-content: center; }
+.dl-card { position: relative; width: 300px; height: 540px; padding: 40px 24px 26px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; color: var(--paper-ink);
+  background: linear-gradient(180deg, #1e2a5a 0 38%, #f2efe8 62%); border: 4px solid #d8c07a; border-radius: 150px 150px 14px 14px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+.dl-card.rare { border-color: #6ab0ff; } .dl-card.epic { border-color: #c47aff; box-shadow: 0 0 30px rgba(196,122,255,.6); }
+.dl-card .rar { position: absolute; top: 12px; font: 700 16px var(--font); color: #fff; padding: 1px 12px; background: rgba(0,0,0,.4); border-radius: 10px; }
+.dl-card .ic { width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, #2a3a6a, #0e1430); border: 4px solid #4aa0ff; display: grid; place-items: center; box-shadow: 0 0 24px rgba(74,160,255,.6); }
+.dl-card .ic img { width: 90px; height: 90px; image-rendering: pixelated; }
+.dl-card b { font: 700 28px var(--font); margin-top: 20px; }
+.dl-card p { margin: 0; font: 400 22px/1.35 var(--font); flex: 1; }
+.dl-card p em { color: #e0602a; font-style: normal; font-weight: 700; }
+.dl-card .kw { color: #9a3ad0; text-decoration: underline; }
+.dl-card.small { width: 230px; height: 420px; padding: 34px 16px 16px; gap: 10px; border-radius: 115px 115px 12px 12px; }
+.dl-card.small .ic { width: 100px; height: 100px; } .dl-card.small .ic img { width: 64px; height: 64px; }
+.dl-card.small b { font-size: 22px; margin-top: 8px; } .dl-card.small p { font-size: 18px; }
+.dl-card .price { display: flex; gap: 6px; align-items: center; font: 700 24px var(--font); }
+.dl-card .price img { width: 26px; height: 26px; }
+.dl-card[disabled] { opacity: .45; cursor: not-allowed; }
+.dl-card.service { background: linear-gradient(180deg, #1e4a3a 0 38%, #f2efe8 62%); }
+.dl-picked { position: absolute; left: 30px; bottom: 30px; display: flex; gap: 10px; padding: 10px 14px; background: rgba(10,8,20,.8); max-width: 900px; flex-wrap: wrap; }
+.dl-picked .dl-slot { width: 60px; height: 60px; } .dl-picked .dl-slot img { width: 40px; height: 40px; }
+.dl-offer-actions { position: absolute; right: 50px; bottom: 30px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.dl-rerolls { font: 700 28px var(--font); text-shadow: 2px 2px 0 #000; }
+.dl-offer-actions .row2 { display: flex; gap: 12px; }
+.dl-room { background: linear-gradient(180deg, rgba(20,16,30,.85), rgba(20,16,30,.95)), url("assets/bg_battle_under_weiautoworks.webp") center / cover; }
+.dl-room-body { position: absolute; left: 50%; top: 120px; transform: translateX(-50%); width: 1300px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+.dl-room-body h2 { margin: 0; font: 700 italic 56px var(--font); color: var(--gold); }
+.dl-room-body p { margin: 0; font: 400 26px/1.4 var(--font); color: #ddd6f2; max-width: 900px; }
+.dl-choices { display: flex; gap: 30px; margin-top: 20px; }
+.dl-choice { width: 420px; padding: 26px; display: flex; flex-direction: column; gap: 8px; background: rgba(10,8,20,.85); border: 3px solid #6a5a8f; font: 400 22px var(--font); color: #ddd6f2; }
+.dl-choice b { font: 700 28px var(--font); color: #fff; }
+.dl-choice:hover:not([disabled]) { border-color: var(--gold); transform: translateY(-3px); }
+.dl-choice[disabled] { opacity: .45; cursor: not-allowed; }
+.dl-shop { display: flex; gap: 22px; margin-top: 10px; }
+.dl-room-foot { margin-top: 20px; }
+.dl-check { display: flex; gap: 10px; align-items: center; font: 400 22px var(--font); }
+.dl-check input { width: 22px; height: 22px; accent-color: var(--ink); }
+.dl-endcards { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+.dl-mini { width: 40px; height: 40px; image-rendering: pixelated; background: #2a3a6a; border-radius: 50%; padding: 4px; }
 </style>
 </head>
 <body>
@@ -434,6 +553,7 @@ img { display: block; }
     <button type="button" data-mode="tactical" role="tab">Combat Simulation</button>
     <button type="button" data-mode="coop" role="tab">Co-op Raid</button>
     <button type="button" data-mode="league" role="tab">GFC League</button>
+    <button type="button" data-mode="deeplayer" role="tab">Deep Layer</button>
   </div>
 </div>
 <div class="viewport"><div class="stage" id="stage">
@@ -556,6 +676,52 @@ img { display: block; }
     </div>
   </section>
 
+  <section class="concept" data-mode="deeplayer" hidden>
+    <div class="dl-view dl-entry" data-view="entry">
+      <div class="wb-top"><button class="back-btn" type="button" data-act="back"><img src="assets/BackBTN.png" alt="Back"></button><button class="round" type="button" data-act="dl-help"><span>?</span></button></div>
+      <div class="dl-title"><b>Deep Layer</b><span>Vierhaven Descent</span><small>Midground → Underground → Deep Layer</small></div>
+      <div class="dl-side">
+        <div class="dl-dial"><button type="button" data-dl-dial="-1" aria-label="Lower difficulty">◂</button><div class="ring"><b></b></div><button type="button" data-dl-dial="1" aria-label="Raise difficulty">▸</button></div>
+        <div class="dl-dial-label">Difficulty</div>
+        <div class="dl-track"></div>
+        <div class="dl-best"></div>
+        <div class="dl-rw-label">Reward Overview ⟶</div>
+        <div class="dl-rewards"></div>
+        <button class="arrow-btn" type="button" data-act="dl-start" style="margin-top:10px">Challenge</button>
+      </div>
+    </div>
+    <div class="dl-view dl-map" data-view="map" hidden>
+      <div class="dl-legend">
+        <span><svg viewBox="0 0 24 24"><path d="M5 19 19 5M14 5h5v5M19 19 5 5M10 5H5v5"/></svg>Battle</span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 3c4.4 0 8 3.4 8 7.6 0 2.6-1.4 4.4-3 5.4V20H8v-4c-1.6-1-3-2.8-3-5.4C5 6.4 7.6 3 12 3z"/></svg>Elite</span>
+        <span><svg viewBox="0 0 24 24"><path d="M9 9a3 3 0 1 1 4.5 2.6c-1 .6-1.5 1.2-1.5 2.4M12 18v.5"/></svg>Event</span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 3c2 3 4 4.5 4 8a4 4 0 0 1-8 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-4 0-7z"/></svg>Rest</span>
+        <span><svg viewBox="0 0 24 24"><path d="M3 4h3l2.4 11h9.6L21 7H7"/></svg>Black Market</span>
+        <span><svg viewBox="0 0 24 24"><path d="M3 18 5 7l4.5 4L12 4l2.5 7L19 7l2 11z"/></svg>Boss</span>
+      </div>
+      <div class="dl-hud"></div>
+      <div class="dl-map-scroll"><div class="dl-map-inner"></div></div>
+      <button class="btn blue small dl-abandon" type="button" data-act="dl-abandon">Abandon Run</button>
+    </div>
+    <div class="dl-view dl-battle" data-view="battle" hidden>
+      <div class="dl-bhud"></div>
+      <div class="dl-wave"></div>
+      <div class="dl-team"></div>
+      <div class="dl-enemies"></div>
+      <div class="dl-boss-banner" hidden></div>
+      <button class="btn blue small dl-skip" type="button" data-act="dl-skip-battle">Skip ▸▸</button>
+    </div>
+    <div class="dl-view dl-offer" data-view="offer" hidden>
+      <div class="dl-offer-title"></div>
+      <div class="dl-cards"></div>
+      <div class="dl-picked"></div>
+      <div class="dl-offer-actions"><span class="dl-rerolls"></span><div class="row2"><button class="btn blue" type="button" data-act="dl-skip">Skip</button><button class="btn blue" type="button" data-act="dl-refresh">Refresh skills</button></div></div>
+    </div>
+    <div class="dl-view dl-room" data-view="room" hidden>
+      <div class="dl-rhud"></div>
+      <div class="dl-room-body"></div>
+    </div>
+  </section>
   <section class="shop" id="shop" hidden>
     <nav><span class="on">SHOP</span></nav>
     <button class="back-btn" type="button" id="shop-back"><img src="assets/BackBTN.png" alt="Back"></button>
@@ -602,7 +768,7 @@ img { display: block; }
 </div><div class="turn-hint">Turn your phone sideways for a bigger view</div></div>
 
 <script>
-const DATA = {"bosses":[{"key":"dueoksini","name":"Dueokshini","element":"power","portrait":"boss_dueoksini_portrait.webp","banner":"boss_dueoksini_banner.webp","thumb":"boss_dueoksini_thumb.webp","icons":["skill_Dueoksini_01.webp","skill_Dueoksini_02.webp","skill_Passive_BonusDamage.webp","skill_Passive_Buff_Attack.webp"]},{"key":"siren","name":"Siren","element":"bio","portrait":"boss_siren_portrait.webp","banner":"boss_siren_banner.webp","thumb":"boss_siren_thumb.webp","icons":["skill_Siren_SoundWave.webp","skill_Siren_SideAttack.webp","skill_Siren_Shh.webp","skill_Siren_Debuff.webp"]},{"key":"djmadu","name":"DJ Madu","element":"network","portrait":"boss_djmadu_portrait.webp","banner":"boss_djmadu_banner.webp","thumb":"boss_djmadu_thumb.webp","icons":["skill_Madu_Active1.webp","skill_Madu_Active2.webp","skill_Madu_Active3.webp","skill_Madu_Shield.webp"]},{"key":"repo13","name":"Collection No. 13","element":"network","portrait":"boss_repo13_portrait.webp","banner":"boss_repo13_banner.webp","thumb":"boss_repo13_thumb.webp","icons":["skill_Drax_Active.webp","skill_Passive_Debuff_Defense.webp","skill_Passive_Buff_Attack.webp","skill_Passive_Counter.webp"]},{"key":"manekin","name":"Hungry Manekin Second Phase","element":"power","portrait":"boss_manekin_portrait.webp","banner":"boss_manekin_banner.webp","thumb":"boss_manekin_thumb.webp","icons":["skill_Passive_BonusDamage.webp","skill_Passive_Spread.webp","skill_Passive_Heal.webp","skill_Passive_DamageReduce.webp"]},{"key":"navii","name":"Navii Commander","element":"power","portrait":"boss_navii_portrait.webp","banner":"boss_navii_banner.webp","thumb":"boss_navii_thumb.webp","icons":["skill_NaviiCommander_Active.webp","skill_Passive_Shield.webp","skill_Passive_Debuff_Attack.webp","skill_Passive_Reflect.webp"]}],"roster":[{"id":1000000,"name":"Hyde","tier":"XA","class":"Slaughter","element":"electrical","thumbnail":"Thumbnail_Wide_Hyde.webp","art":"art_Hyde.webp"},{"id":1000006,"name":"Lain","tier":"XA","class":"Slaughter","element":"plasma","thumbnail":"Thumbnail_Wide_Lain.webp","art":"art_Lain.webp"},{"id":1000002,"name":"Muro","tier":"XA","class":"Jacker","element":"network","thumbnail":"Thumbnail_Wide_Muro.webp","art":"art_Muro.webp"},{"id":1000003,"name":"Drax","tier":"XA","class":"Vanguard","element":"power","thumbnail":"Thumbnail_Wide_Drax.webp","art":"art_Drax.webp"},{"id":1000005,"name":"Hyki","tier":"XA","class":"Jacker","element":"chemical","thumbnail":"Thumbnail_Wide_Hyki.webp","art":"art_Hyki.webp"},{"id":1000001,"name":"Rem","tier":"XA","class":"Rewinder","element":"bio","thumbnail":"Thumbnail_Wide_Rem.webp","art":"art_Rem.webp"},{"id":1000010,"name":"Tsuki","tier":"XA","class":"Jacker","element":"power","thumbnail":"Thumbnail_Wide_Tsuki.webp","art":"art_Tsuki.webp"},{"id":1000012,"name":"Persa","tier":"XA","class":"Slaughter","element":"plasma","thumbnail":"Thumbnail_Wide_Persa.webp","art":"art_Persa.webp"},{"id":1000017,"name":"Hayden","tier":"XA","class":"Slaughter","element":"network","thumbnail":"Thumbnail_Wide_Hayden.webp","art":"art_Hayden.webp"},{"id":1000021,"name":"Morgan","tier":"XA","class":"Rewinder","element":"bio","thumbnail":"Thumbnail_Wide_Morgan.webp","art":"art_Morgan.webp"},{"id":1000033,"name":"Soll","tier":"XA","class":"Slaughter","element":"plasma","thumbnail":"Thumbnail_Wide_Soll.webp","art":"art_Soll.webp"},{"id":1000041,"name":"Ari","tier":"XA","class":"Vanguard","element":"chemical","thumbnail":"Thumbnail_Wide_Ari.webp","art":"art_Ari.webp"},{"id":1000028,"name":"Baeksa","tier":"XA","class":"Rewinder","element":"plasma","thumbnail":"Thumbnail_Wide_Baeksa.webp","art":"art_Baeksa.webp"},{"id":1000004,"name":"Verdorman","tier":"X","class":"Vanguard","element":"bio","thumbnail":"Thumbnail_Wide_Verdorman.webp","art":"art_Verdorman.webp"},{"id":1000007,"name":"Lilly","tier":"X","class":"Jacker","element":"chemical","thumbnail":"Thumbnail_Wide_Lilly.webp","art":"art_Lilly.webp"},{"id":1000008,"name":"Ru","tier":"X","class":"Rewinder","element":"plasma","thumbnail":"Thumbnail_Wide_Ru.webp","art":"art_Ru.webp"},{"id":1000009,"name":"Sean Terry","tier":"X","class":"Vanguard","element":"plasma","thumbnail":"Thumbnail_Wide_Terry.webp","art":"art_Terry.webp"},{"id":1000018,"name":"Reyna","tier":"X","class":"Jacker","element":"power","thumbnail":"Thumbnail_Wide_Reyna.webp","art":"art_Reyna.webp"},{"id":1000042,"name":"Hugo","tier":"X","class":"Slaughter","element":"electrical","thumbnail":"Thumbnail_Wide_Hugo.webp","art":"art_Hugo.webp"},{"id":1000043,"name":"Zero-P","tier":"X","class":"Vanguard","element":"bio","thumbnail":"Thumbnail_Wide_ZeroP.webp","art":"art_ZeroP.webp"},{"id":1000044,"name":"Tyra","tier":"X","class":"Slaughter","element":"network","thumbnail":"Thumbnail_Wide_Tyra.webp","art":"art_Tyra.webp"},{"id":1000047,"name":"Yasha","tier":"X","class":"Jacker","element":"power","thumbnail":"Thumbnail_Wide_Yasha.webp","art":"art_Yasha.webp"},{"id":1000049,"name":"Nataliya","tier":"X","class":"Rewinder","element":"electrical","thumbnail":"Thumbnail_Wide_Nataliya.webp","art":"art_Nataliya.webp"},{"id":1000025,"name":"Mother","tier":"X","class":"Rewinder","element":"plasma","thumbnail":"Thumbnail_Wide_Mother.webp","art":"art_Mother.webp"},{"id":1000050,"name":"Mou","tier":"XA","class":"Rewinder","element":"electrical","thumbnail":"Thumbnail_Wide_Mou.webp","art":"art_Mou.webp"},{"id":1000046,"name":"Kirill","tier":"S","class":"Slaughter","element":"electrical","thumbnail":"Thumbnail_Wide_Kirill.webp","art":"art_Kirill.webp"},{"id":1000048,"name":"Mighty","tier":"S","class":"Vanguard","element":"chemical","thumbnail":"Thumbnail_Wide_Mighty.webp","art":"art_Mighty.webp"},{"id":1000052,"name":"Lin Qiang","tier":"S","class":"Vanguard","element":"power","thumbnail":"Thumbnail_Wide_LinQiang.webp","art":"art_LinQiang.webp"},{"id":1000054,"name":"Andrew","tier":"X","class":"Slaughter","element":"network","thumbnail":"Thumbnail_Wide_Andrew.webp","art":"art_Andrew.webp"},{"id":1000085,"name":"Marcus","tier":"S","class":"Vanguard","element":"network","thumbnail":"Thumbnail_Wide_Marcus.webp","art":"art_Marcus.webp"}]};
+const DATA = {"bosses":[{"key":"dueoksini","name":"Dueokshini","element":"power","portrait":"boss_dueoksini_portrait.webp","banner":"boss_dueoksini_banner.webp","thumb":"boss_dueoksini_thumb.webp","icons":["skill_Dueoksini_01.webp","skill_Dueoksini_02.webp","skill_Passive_BonusDamage.webp","skill_Passive_Buff_Attack.webp"]},{"key":"siren","name":"Siren","element":"bio","portrait":"boss_siren_portrait.webp","banner":"boss_siren_banner.webp","thumb":"boss_siren_thumb.webp","icons":["skill_Siren_SoundWave.webp","skill_Siren_SideAttack.webp","skill_Siren_Shh.webp","skill_Siren_Debuff.webp"]},{"key":"djmadu","name":"DJ Madu","element":"network","portrait":"boss_djmadu_portrait.webp","banner":"boss_djmadu_banner.webp","thumb":"boss_djmadu_thumb.webp","icons":["skill_Madu_Active1.webp","skill_Madu_Active2.webp","skill_Madu_Active3.webp","skill_Madu_Shield.webp"]},{"key":"repo13","name":"Collection No. 13","element":"network","portrait":"boss_repo13_portrait.webp","banner":"boss_repo13_banner.webp","thumb":"boss_repo13_thumb.webp","icons":["skill_Drax_Active.webp","skill_Passive_Debuff_Defense.webp","skill_Passive_Buff_Attack.webp","skill_Passive_Counter.webp"]},{"key":"manekin","name":"Hungry Manekin Second Phase","element":"power","portrait":"boss_manekin_portrait.webp","banner":"boss_manekin_banner.webp","thumb":"boss_manekin_thumb.webp","icons":["skill_Passive_BonusDamage.webp","skill_Passive_Spread.webp","skill_Passive_Heal.webp","skill_Passive_DamageReduce.webp"]},{"key":"navii","name":"Navii Commander","element":"power","portrait":"boss_navii_portrait.webp","banner":"boss_navii_banner.webp","thumb":"boss_navii_thumb.webp","icons":["skill_NaviiCommander_Active.webp","skill_Passive_Shield.webp","skill_Passive_Debuff_Attack.webp","skill_Passive_Reflect.webp"]}],"roster":[{"id":1000000,"name":"Hyde","tier":"XA","class":"Slaughter","element":"electrical","thumbnail":"Thumbnail_Wide_Hyde.webp","art":"art_Hyde.webp"},{"id":1000006,"name":"Lain","tier":"XA","class":"Slaughter","element":"plasma","thumbnail":"Thumbnail_Wide_Lain.webp","art":"art_Lain.webp"},{"id":1000002,"name":"Muro","tier":"XA","class":"Jacker","element":"network","thumbnail":"Thumbnail_Wide_Muro.webp","art":"art_Muro.webp"},{"id":1000003,"name":"Drax","tier":"XA","class":"Vanguard","element":"power","thumbnail":"Thumbnail_Wide_Drax.webp","art":"art_Drax.webp"},{"id":1000005,"name":"Hyki","tier":"XA","class":"Jacker","element":"chemical","thumbnail":"Thumbnail_Wide_Hyki.webp","art":"art_Hyki.webp"},{"id":1000001,"name":"Rem","tier":"XA","class":"Rewinder","element":"bio","thumbnail":"Thumbnail_Wide_Rem.webp","art":"art_Rem.webp"},{"id":1000010,"name":"Tsuki","tier":"XA","class":"Jacker","element":"power","thumbnail":"Thumbnail_Wide_Tsuki.webp","art":"art_Tsuki.webp"},{"id":1000012,"name":"Persa","tier":"XA","class":"Slaughter","element":"plasma","thumbnail":"Thumbnail_Wide_Persa.webp","art":"art_Persa.webp"},{"id":1000017,"name":"Hayden","tier":"XA","class":"Slaughter","element":"network","thumbnail":"Thumbnail_Wide_Hayden.webp","art":"art_Hayden.webp"},{"id":1000021,"name":"Morgan","tier":"XA","class":"Rewinder","element":"bio","thumbnail":"Thumbnail_Wide_Morgan.webp","art":"art_Morgan.webp"},{"id":1000033,"name":"Soll","tier":"XA","class":"Slaughter","element":"plasma","thumbnail":"Thumbnail_Wide_Soll.webp","art":"art_Soll.webp"},{"id":1000041,"name":"Ari","tier":"XA","class":"Vanguard","element":"chemical","thumbnail":"Thumbnail_Wide_Ari.webp","art":"art_Ari.webp"},{"id":1000028,"name":"Baeksa","tier":"XA","class":"Rewinder","element":"plasma","thumbnail":"Thumbnail_Wide_Baeksa.webp","art":"art_Baeksa.webp"},{"id":1000004,"name":"Verdorman","tier":"X","class":"Vanguard","element":"bio","thumbnail":"Thumbnail_Wide_Verdorman.webp","art":"art_Verdorman.webp"},{"id":1000007,"name":"Lilly","tier":"X","class":"Jacker","element":"chemical","thumbnail":"Thumbnail_Wide_Lilly.webp","art":"art_Lilly.webp"},{"id":1000008,"name":"Ru","tier":"X","class":"Rewinder","element":"plasma","thumbnail":"Thumbnail_Wide_Ru.webp","art":"art_Ru.webp"},{"id":1000009,"name":"Sean Terry","tier":"X","class":"Vanguard","element":"plasma","thumbnail":"Thumbnail_Wide_Terry.webp","art":"art_Terry.webp"},{"id":1000018,"name":"Reyna","tier":"X","class":"Jacker","element":"power","thumbnail":"Thumbnail_Wide_Reyna.webp","art":"art_Reyna.webp"},{"id":1000042,"name":"Hugo","tier":"X","class":"Slaughter","element":"electrical","thumbnail":"Thumbnail_Wide_Hugo.webp","art":"art_Hugo.webp"},{"id":1000043,"name":"Zero-P","tier":"X","class":"Vanguard","element":"bio","thumbnail":"Thumbnail_Wide_ZeroP.webp","art":"art_ZeroP.webp"},{"id":1000044,"name":"Tyra","tier":"X","class":"Slaughter","element":"network","thumbnail":"Thumbnail_Wide_Tyra.webp","art":"art_Tyra.webp"},{"id":1000047,"name":"Yasha","tier":"X","class":"Jacker","element":"power","thumbnail":"Thumbnail_Wide_Yasha.webp","art":"art_Yasha.webp"},{"id":1000049,"name":"Nataliya","tier":"X","class":"Rewinder","element":"electrical","thumbnail":"Thumbnail_Wide_Nataliya.webp","art":"art_Nataliya.webp"},{"id":1000025,"name":"Mother","tier":"X","class":"Rewinder","element":"plasma","thumbnail":"Thumbnail_Wide_Mother.webp","art":"art_Mother.webp"},{"id":1000050,"name":"Mou","tier":"XA","class":"Rewinder","element":"electrical","thumbnail":"Thumbnail_Wide_Mou.webp","art":"art_Mou.webp"},{"id":1000046,"name":"Kirill","tier":"S","class":"Slaughter","element":"electrical","thumbnail":"Thumbnail_Wide_Kirill.webp","art":"art_Kirill.webp"},{"id":1000048,"name":"Mighty","tier":"S","class":"Vanguard","element":"chemical","thumbnail":"Thumbnail_Wide_Mighty.webp","art":"art_Mighty.webp"},{"id":1000052,"name":"Lin Qiang","tier":"S","class":"Vanguard","element":"power","thumbnail":"Thumbnail_Wide_LinQiang.webp","art":"art_LinQiang.webp"},{"id":1000054,"name":"Andrew","tier":"X","class":"Slaughter","element":"network","thumbnail":"Thumbnail_Wide_Andrew.webp","art":"art_Andrew.webp"},{"id":1000085,"name":"Marcus","tier":"S","class":"Vanguard","element":"network","thumbnail":"Thumbnail_Wide_Marcus.webp","art":"art_Marcus.webp"}],"deepEnemies":{"mid":[{"id":3004,"name":"Navii Soldier","element":"power","image":"enemy_NaviiSoldier.webp"},{"id":3005,"name":"Navii Security Team","element":"power","image":"enemy_NaviiSecurity.webp"},{"id":3001,"name":"Drone","element":"power","image":"enemy_HungryMannequinMob.webp"},{"id":10000200,"name":"MGPD Riot Patrolman","element":"chemical","image":"enemy_MGPDInspector.webp"},{"id":10000103,"name":"HDT Rookie Guard","element":"bio","image":"enemy_VlackyWeak.webp"},{"id":10000503,"name":"Amatech Escort Rookie","element":"plasma","image":"enemy_AmatechRookie.webp"},{"id":50001100,"name":"Bulk Vlacky","element":"network","image":"enemy_Vlacky.webp"}],"under":[{"id":10000400,"name":"AG Containment Acolyte","element":"network","image":"enemy_AGAcolyte.webp"},{"id":10000703,"name":"Mass-produced Escort Iron","element":"plasma","image":"enemy_Iron.webp"},{"id":50001500,"name":"Bulk Terry","element":"plasma","image":"enemy_Terry.webp"},{"id":3008,"name":"Weak Test Subject","element":"plasma","image":"enemy_TestWeakMob.webp"},{"id":3009,"name":"Strong Test Subject","element":"power","image":"enemy_TestStrongMob.webp"},{"id":3011,"name":"Test Subject No. 44","element":"plasma","image":"enemy_TestNo44.webp"},{"id":3002,"name":"Training Bot","element":"plasma","image":"enemy_TrainingBot.webp"}],"elite":[{"id":3006,"name":"Navii Elite Soldier","element":"network","image":"enemy_NaviiEliteSoldier.webp"},{"id":10000106,"name":"HDT Guard Deputy","element":"power","image":"enemy_VlackyElite.webp"},{"id":10000206,"name":"MGPD SWAT Shield Trooper","element":"chemical","image":"enemy_MGPDSpecialforce.webp"},{"id":10000406,"name":"AG Containment High Priest","element":"network","image":"enemy_AGPriest.webp"},{"id":10000506,"name":"Amatech Escort Soldier","element":"power","image":"enemy_AmatechSoldier.webp"},{"id":10000706,"name":"Escort Calis","element":"power","image":"enemy_Kalis.webp"},{"id":3203,"name":"Sonata","element":"power","image":"enemy_MaduMob.webp"}],"mini":[{"id":10010100,"name":"Butler","element":"network","image":"enemy_VlackyBoss.webp"},{"id":10010500,"name":"Ironclad","element":"power","image":"enemy_AmatechIronclad.webp"},{"id":10010400,"name":"AG High Priest","element":"plasma","image":"enemy_AGHighPriest.webp"}]}};
 
 const asset = name => (window.ASSETS && window.ASSETS[name]) || 'assets/' + name;
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -1557,6 +1723,437 @@ document.addEventListener('keydown', e => {
     if (currentMode === 'league') $('.lg-bar .regen', root).textContent = st.attempts < 12 ? `(${clock(st.regen)})` : '';
   });
   MODES.league = { show: render };
+})();
+
+(() => {
+  const root = $('section[data-mode="deeplayer"]');
+  const ENEMIES = DATA.deepEnemies;
+  const BOSS = DATA.bosses.find(b => b.key === 'dueoksini');
+  const ROWS = 9;
+  const LAYERS = [['Midground', 0, 3], ['Underground', 4, 7], ['Deep Layer', 8, 9]];
+  const layerOf = row => LAYERS.find(([, a, b]) => row >= a && row <= b)[0];
+  const CARDS = [
+    { id: 'overdrive', name: 'Overdrive', icon: 'skill_Passive_Buff_Attack.webp', rarity: 'common', text: "Agents' ATK +<em>15%</em>.", off: 0.15 },
+    { id: 'focus', name: 'Focus', icon: 'skill_Passive_Buff_CritRate.webp', rarity: 'common', text: 'Crit Rate +<em>15%</em>.', off: 0.08 },
+    { id: 'armorbreak', name: 'Armor Break', icon: 'skill_Passive_Debuff_Defense.webp', rarity: 'common', text: "Enemies' DEF −<em>20%</em>.", off: 0.1 },
+    { id: 'effecthit', name: 'Suppression', icon: 'skill_Passive_Debuff_Attack.webp', rarity: 'common', text: "Increases Effect Hit by <em>30%</em>. Enemies' ATK −15%.", def: 0.12 },
+    { id: 'barrier', name: 'Barrier', icon: 'skill_Passive_Shield.webp', rarity: 'common', text: 'Agents start each wave with a shield worth <em>15%</em> of max HP.', def: 0.15 },
+    { id: 'medic', name: 'Field Medic', icon: 'skill_Passive_Heal.webp', rarity: 'common', text: 'Restores <em>8</em> HP after each battle.', heal: 8 },
+    { id: 'scout', name: 'Scout Report', icon: 'Common_Icon_Class_Jacker.png', rarity: 'common', text: 'Each Jacker in the team earns <em>+6</em> Packets after a battle.', perClass: ['Jacker', 6, 'packets'] },
+    { id: 'supply', name: 'Supply Run', icon: 'Common_Icon_Class_Rewinder.png', rarity: 'common', text: 'Each Rewinder in the team restores <em>3</em> HP after a battle.', perClass: ['Rewinder', 3, 'heal'] },
+    { id: 'lethal', name: 'Lethal Edge', icon: 'skill_Passive_Buff_CritDamage.webp', rarity: 'rare', text: 'Crit DMG +<em>40%</em>.', off: 0.12 },
+    { id: 'chain', name: 'Chain Reaction', icon: 'skill_Passive_Spread.webp', rarity: 'rare', text: 'Area skills deal <em>30%</em> more damage.', off: 0.14 },
+    { id: 'repair', name: 'Repair', icon: 'skill_Passive_Dispel.webp', rarity: 'rare', text: 'Gains the passive effect <span class="kw">Repair</span>: restores <em>3%</em> HP every round.', def: 0.08, heal: 5 },
+    { id: 'rush', name: 'Rush Start', icon: 'skill_Passive_Counter.webp', rarity: 'rare', text: 'All agents start each battle with <em>+1</em> Infinite.', off: 0.12 },
+    { id: 'reflect', name: 'Riot Shield', icon: 'skill_Passive_Reflect.webp', rarity: 'rare', text: 'Reflects <em>15%</em> of damage taken back to the attacker.', def: 0.08, off: 0.04 },
+    { id: 'strike', name: 'Strike Formation', icon: 'Common_Icon_Class_Slaughter.png', rarity: 'rare', text: 'Each Slaughter in the team deals <em>+12%</em> damage.', perClass: ['Slaughter', 0.12, 'off'] },
+    { id: 'guard', name: 'Guard Line', icon: 'Common_Icon_Class_Vangard.png', rarity: 'rare', text: 'Each Vanguard in the team lowers damage taken by <em>6%</em>.', perClass: ['Vanguard', 0.06, 'def'] },
+    { id: 'dot', name: 'Overheat', icon: 'skill_Passive_BonusDamage.webp', rarity: 'epic', text: 'Every <em>0.1</em> seconds, increases all damage-over-time on an enemy by <em>100%</em>, up to a maximum of <em>1000%</em>.', off: 0.08, offHeavy: 0.3 },
+    { id: 'weakpoint', name: 'Weak Point', icon: 'skill_Dueoksini_01.webp', rarity: 'epic', text: 'Agents whose element beats the enemy deal <em>+40%</em> damage.', adv: 0.4 },
+    { id: 'secondwind', name: 'Second Wind', icon: 'skill_Passive_DamageReduce.webp', rarity: 'epic', text: 'Once per run, when HP drops to 0, revive with <em>30%</em> HP.', revive: true }
+  ];
+  const cardById = Object.fromEntries(CARDS.map(c => [c.id, c]));
+  const RARITY = { common: ['Common', 60], rare: ['Rare', 30], epic: ['Epic', 10] };
+  const NODE = {
+    battle: ['Battle', '<path d="M5 19 19 5M14 5h5v5M19 19 5 5M10 5H5v5"/>'],
+    elite: ['Elite', '<path d="M12 3c4.4 0 8 3.4 8 7.6 0 2.6-1.4 4.4-3 5.4V20H8v-4c-1.6-1-3-2.8-3-5.4C5 6.4 7.6 3 12 3z"/><circle cx="9" cy="11" r="1.6"/><circle cx="15" cy="11" r="1.6"/><path d="M5 4l3 3M19 4l-3 3"/>'],
+    event: ['Event', '<path d="M9 9a3 3 0 1 1 4.5 2.6c-1 .6-1.5 1.2-1.5 2.4M12 18v.5"/>'],
+    rest: ['Rest', '<path d="M12 3c2 3 4 4.5 4 8a4 4 0 0 1-8 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-4 0-7zM4 21l16-3M4 18l16 3"/>'],
+    shop: ['Shop', '<path d="M3 4h3l2.4 11h9.6L21 7H7"/><circle cx="10" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/>'],
+    boss: ['Boss', '<path d="M3 18 5 7l4.5 4L12 4l2.5 7L19 7l2 11z"/><path d="M5 21h14"/>']
+  };
+  const EVENTS = [
+    { title: 'NAVII Checkpoint', text: 'A NAVII patrol has sealed the stairwell down to the next level. They let people through for a fee.',
+      choices: [['Pay the toll (−30 Packets)', r => r.packets >= 30, r => { r.packets -= 30; return 'The patrol waves you through.'; }],
+        ['Force your way through', () => true, () => 'fight-elite']] },
+    { title: 'Crashed Delivery Drone', text: 'A delivery drone lies in the rubble with its cargo hatch still sealed.',
+      choices: [['Salvage the cargo (−10 HP, gain a card)', () => true, r => { damage(r, 10); const c = randomCards(1, true)[0]; r.cards.push(c.id); return `You pry it open and find <b>${c.name}</b>.`; }],
+        ['Strip it for parts (+20 Packets)', () => true, r => { r.packets += 20; return 'The parts sell for 20 Packets.'; }]] },
+    { title: 'Ash Breakers Shelter', text: 'An Ash Breakers shelter takes in anyone who can pay in Packets or news from upstairs.',
+      choices: [['Rest here (+20 HP)', () => true, r => { heal(r, 20); return 'Your agents patch up and catch their breath.'; }],
+        ['Trade news (+35 Packets)', () => true, r => { r.packets += 35; return 'They pay well for news from the Midground.'; }]] },
+    { title: 'Junkyard Vending Machine', text: 'It hums. It takes Packets. Probably.',
+      choices: [['Insert 20 Packets', r => r.packets >= 20, r => { r.packets -= 20; if (Math.random() < 0.7) { const c = randomCards(1, true)[0]; r.cards.push(c.id); return `Out drops <b>${c.name}</b>.`; } return 'Nothing comes out.'; }],
+        ['Kick it (−6 HP, +15 Packets)', () => true, r => { damage(r, 6); r.packets += 15; return 'Some Packets rattle loose.'; }]] }
+  ];
+  const st = { level: 3, best: 2, firstClear: { 1: true, 2: true }, skipRefreshNote: false, team: { ids: [1000006, 1000000, 1000003, 1000012, 1000001], captain: 1000006, formation: 'Offensive' }, run: null };
+  const view = name => { $$('.dl-view', root).forEach(v => { v.hidden = v.dataset.view !== name; }); };
+  const rand = n => Math.floor(Math.random() * n);
+  const pick = list => list[rand(list.length)];
+
+  function damage(r, n) { r.hp = Math.max(0, r.hp - n); }
+  function heal(r, n) { r.hp = Math.min(r.maxHp, r.hp + n); }
+  function classCount(cls) { return st.run.team.ids.filter(id => unitsById[id].class === cls).length; }
+  function owned(prop) { return st.run.cards.map(id => cardById[id]).filter(c => c[prop]); }
+  function randomCards(n, rareUp = false, exclude = []) {
+    const pool = CARDS.filter(c => !exclude.includes(c.id) && !(st.run && st.run.cards.includes(c.id) && !c.heal));
+    const out = [];
+    while (out.length < n && pool.length) {
+      const w = pool.map(c => RARITY[c.rarity][1] * (rareUp && c.rarity !== 'common' ? 2.5 : 1));
+      let x = Math.random() * w.reduce((a, b) => a + b, 0);
+      const i = w.findIndex(v => (x -= v) < 0);
+      out.push(pool.splice(i, 1)[0]);
+    }
+    return out;
+  }
+
+  function buildMap() {
+    const rows = [];
+    for (let r = 0; r < ROWS; r++) {
+      const count = r === 0 || r === ROWS - 1 ? 3 : 2 + rand(3);
+      const cols = [0, 1, 2, 3, 4].sort(() => Math.random() - 0.5).slice(0, count).sort();
+      rows.push(cols.map(c => {
+        let type = 'battle';
+        if (r === ROWS - 1) type = 'rest';
+        else if (r > 0) {
+          const roll = Math.random() * 100;
+          type = roll < 45 ? 'battle' : roll < 61 && r >= 3 ? 'elite' : roll < 79 ? 'event' : roll < 90 && r >= 3 && r <= 6 ? 'rest' : roll < 100 && r >= 2 ? 'shop' : 'battle';
+        }
+        return { id: `${r}-${c}`, row: r, col: c, type, next: [], jx: rand(40) - 20, jy: rand(16) - 8 };
+      }));
+    }
+    rows.push([{ id: `${ROWS}-2`, row: ROWS, col: 2, type: 'boss', next: [], jx: 0, jy: 0 }]);
+    for (let r = 0; r < rows.length - 1; r++) {
+      const below = rows[r + 1];
+      rows[r].forEach(n => {
+        const sorted = below.slice().sort((a, b) => Math.abs(a.col - n.col) - Math.abs(b.col - n.col));
+        n.next.push(sorted[0].id);
+        if (sorted[1] && Math.abs(sorted[1].col - n.col) <= 1 && Math.random() < 0.45) n.next.push(sorted[1].id);
+      });
+      below.forEach(m => {
+        if (!rows[r].some(n => n.next.includes(m.id))) {
+          const near = rows[r].slice().sort((a, b) => Math.abs(a.col - m.col) - Math.abs(b.col - m.col))[0];
+          near.next.push(m.id);
+        }
+      });
+    }
+    return Object.fromEntries(rows.flat().map(n => [n.id, n]));
+  }
+
+  function renderEntry() {
+    const lv = st.level;
+    $('.dl-dial b', root).textContent = lv;
+    $('.dl-dial [data-dl-dial="-1"]', root).disabled = lv <= 1;
+    $('.dl-dial [data-dl-dial="1"]', root).disabled = lv >= 20 || lv > st.best;
+    $('.dl-track', root).innerHTML = Array.from({ length: 20 }, (_, i) => `<i class="${i < st.best ? 'on' : ''}${i === lv - 1 ? ' cur' : ''}${(i + 1) % 5 === 0 ? ' big' : ''}"></i>`).join('');
+    const first = !st.firstClear[lv];
+    const rewards = [['exodium', 600 + lv * 60], ['packet', 500000 + lv * 30000]];
+    const firsts = first ? [['shardXA', 1 + Math.floor(lv / 5)], ['oracle', 300 + lv * 30]] : [];
+    $('.dl-rewards', root).innerHTML = rewards.map(([k, n]) => `<span class="item big" title="${ITEMS[k][1]}"><img src="${asset(ITEMS[k][0])}" alt=""><em>${short(n)}</em></span>`).join('')
+      + firsts.map(([k, n]) => `<span class="item big first" title="${ITEMS[k][1]}"><b>First Clear</b><img src="${asset(ITEMS[k][0])}" alt=""><em>${short(n)}</em></span>`).join('');
+    $('.dl-best', root).textContent = st.best ? `Deepest clear: Difficulty ${st.best}` : 'No clears yet';
+    view('entry');
+  }
+
+  function startRun(team) {
+    st.run = { team: { ...team, ids: team.ids.slice() }, hp: 100, maxHp: 100, packets: 40, cards: [], rerolls: 4, map: buildMap(), pos: null, visited: [], revived: false, battles: 0, level: st.level };
+    renderMap();
+  }
+
+  function available() {
+    const r = st.run;
+    if (!r.pos) return Object.values(r.map).filter(n => n.row === 0).map(n => n.id);
+    return r.map[r.pos].next;
+  }
+
+  function hud() {
+    const r = st.run;
+    const cards = r.cards.map((id, i) => `<button class="dl-slot" type="button" data-dl-card="${i}" title="${escapeHtml(cardById[id].name)}"><img src="${asset(cardById[id].icon)}" alt=""></button>`).join('');
+    return `<div class="dl-hp"><span>HP</span><div class="dl-bar"><i style="width:${r.hp / r.maxHp * 100}%"></i></div><b>${r.hp}/${r.maxHp}</b></div>
+      <div class="coin"><img src="${asset('Currency_Packet.png')}" alt="Packets"><span>${r.packets}</span></div>
+      <div class="dl-diff">Difficulty ${r.level}</div>
+      <div class="dl-slots">${cards || '<span class="empty">No skills yet</span>'}</div>`;
+  }
+
+  function renderMap() {
+    const r = st.run;
+    const nodes = Object.values(r.map);
+    const open = new Set(available());
+    const X = n => 330 + n.col * 210 + n.jx;
+    const Y = n => 70 + n.row * 92 + n.jy;
+    const lines = nodes.flatMap(n => n.next.map(id => {
+      const m = r.map[id];
+      const walked = r.visited.includes(n.id) && (r.visited.includes(m.id) || r.pos === n.id);
+      return `<line x1="${X(n)}" y1="${Y(n)}" x2="${X(m)}" y2="${Y(m)}" class="${walked ? 'walked' : ''}"/>`;
+    })).join('');
+    const btns = nodes.map(n => {
+      const [label, path] = NODE[n.type];
+      const state = r.visited.includes(n.id) ? ' visited' : open.has(n.id) ? ' open' : '';
+      return `<button class="dl-node ${n.type}${state}${r.pos === n.id ? ' here' : ''}" type="button" data-dl-node="${n.id}" style="left:${X(n)}px;top:${Y(n)}px" title="${label}" ${open.has(n.id) ? '' : 'tabindex="-1"'}>
+        <svg viewBox="0 0 24 24">${path}</svg></button>`;
+    }).join('');
+    const bands = LAYERS.map(([name, a, b]) => `<div class="dl-band" style="top:${Y({ row: a, jy: 0 }) - 46}px;height:${(b - a + 1) * 92}px"><span>${name}</span></div>`).join('');
+    $('.dl-map-inner', root).innerHTML = `${bands}<svg class="dl-lines" viewBox="0 0 1600 ${Y({ row: ROWS, jy: 0 }) + 70}">${lines}</svg>${btns}`;
+    $('.dl-map-inner', root).style.height = Y({ row: ROWS, jy: 0 }) + 80 + 'px';
+    $('.dl-hud', root).innerHTML = hud();
+    view('map');
+    const cur = r.pos ? r.map[r.pos] : null;
+    $('.dl-map-scroll', root).scrollTop = cur ? Math.max(0, Y(cur) - 250) : 0;
+  }
+
+  function offense(enemies, heavy) {
+    const r = st.run;
+    const element = enemies[0].element;
+    let mult = 1;
+    owned('off').forEach(c => { mult *= 1 + c.off + (heavy && c.offHeavy ? c.offHeavy : 0); });
+    owned('perClass').filter(c => c.perClass[2] === 'off').forEach(c => { mult *= 1 + c.perClass[1] * classCount(c.perClass[0]); });
+    let power = teamStrength(r.team, element) / 1e6;
+    if (owned('adv').length) {
+      const adv = r.team.ids.filter(id => elementFactor(unitsById[id], element) > 1).length;
+      power *= 1 + 0.4 * adv / 5 * 2.5;
+    }
+    return power * mult;
+  }
+  function defense() {
+    let mult = 1;
+    owned('def').forEach(c => { mult *= 1 - c.def; });
+    owned('perClass').filter(c => c.perClass[2] === 'def').forEach(c => { mult *= 1 - c.perClass[1] * classCount(c.perClass[0]); });
+    return Math.max(0.3, mult);
+  }
+
+  function waveFor(node) {
+    const row = node.row;
+    const pool = row >= 4 ? ENEMIES.under : ENEMIES.mid;
+    const normal = () => pick(pool);
+    if (node.type === 'boss') return [[pick(ENEMIES.elite), pick(ENEMIES.mini)], [{ name: BOSS.name, element: BOSS.element, image: BOSS.thumb, boss: true }]];
+    if (node.type === 'elite') return [[normal(), pick(row >= 6 ? ENEMIES.mini : ENEMIES.elite), normal()], [pick(ENEMIES.elite), normal()]];
+    return [[normal(), normal(), normal()], [normal(), normal(), normal(), normal()].slice(0, 3 + (row >= 5 ? 1 : 0))];
+  }
+
+  let battle = null;
+  function startBattle(node) {
+    const r = st.run;
+    const waves = waveFor(node);
+    const typeMult = { battle: 1, elite: 1.7, boss: 2.6 }[node.type];
+    const lvl = 1 + (r.level - 1) * 0.04;
+    const need = 260 * (1 + node.row * 0.05) * Math.sqrt(typeMult) * lvl;
+    const base = { battle: 8 + node.row * 0.8, elite: 16 + node.row * 1.2, boss: 35 }[node.type];
+    const heavy = node.type !== 'battle';
+    const ratio = offense(waves.flat(), heavy) / need;
+    const total = Math.max(1, Math.round(base / Math.pow(ratio, 1.2) * defense() * lvl));
+    battle = { node, waves, total, wave: 0, taken: 0, timer: null, done: false, ratio };
+    $('.dl-battle', root).style.backgroundImage = `linear-gradient(180deg, rgba(10,10,14,.25), rgba(10,10,14,.7)), url("${asset(node.row >= 4 ? 'bg_battle_under_weiautoworks.webp' : node.type === 'boss' ? 'bg_battle_mid_navii_classifiedfacility.webp' : 'bg_battle_mid_desertedfactory.webp')}")`;
+    $('.dl-team', root).innerHTML = r.team.ids.map(id => `<div class="dl-agent"><img src="${asset(unitsById[id].thumbnail)}" alt=""><span>${escapeHtml(unitsById[id].name)}</span></div>`).join('');
+    $('.dl-bhud', root).innerHTML = hud();
+    $('.dl-boss-banner', root).hidden = node.type !== 'boss';
+    view('battle');
+    playWave();
+  }
+  function playWave() {
+    const r = st.run;
+    const b = battle;
+    const enemies = b.waves[b.wave];
+    $('.dl-wave', root).textContent = `Wave ${b.wave + 1}/${b.waves.length}`;
+    $('.dl-enemies', root).innerHTML = enemies.map((e, i) => `<div class="dl-enemy${e.boss ? ' boss' : ''}" id="dl-e${i}"><img src="${asset(e.image)}" alt=""><b>${escapeHtml(e.name)}</b><div class="dl-bar"><i style="width:100%"></i></div></div>`).join('');
+    const share = Math.round(b.total / b.waves.length);
+    const start = performance.now();
+    const length = 1800;
+    const hpStart = r.hp;
+    const tick = now => {
+      if (b.done) return;
+      const p = Math.min(1, (now - start) / length);
+      enemies.forEach((e, i) => {
+        const el = $('#dl-e' + i);
+        if (!el) return;
+        const delay = i * 0.12;
+        const q = Math.max(0, Math.min(1, (p - delay) / (1 - delay)));
+        $('.dl-bar i', el).style.width = (100 - q * 100) + '%';
+        el.classList.toggle('down', q >= 1);
+      });
+      $('.dl-bhud .dl-hp .dl-bar i', root).style.width = Math.max(0, hpStart - share * p) / r.maxHp * 100 + '%';
+      $('.dl-bhud .dl-hp b', root).textContent = `${Math.max(0, Math.round(hpStart - share * p))}/${r.maxHp}`;
+      if (Math.random() < 0.25) floater(rand(enemies.length));
+      if (p < 1) b.timer = requestAnimationFrame(tick);
+      else waveDone(share);
+    };
+    b.timer = requestAnimationFrame(tick);
+  }
+  function floater(i) {
+    const el = $('#dl-e' + i);
+    if (!el) return;
+    const f = document.createElement('span');
+    const crit = Math.random() < 0.25;
+    f.className = 'dl-float' + (crit ? ' crit' : '');
+    f.textContent = fmt((crit ? 2.1 : 1) * (40000 + rand(60000)) * (1 + st.run.level * 0.05));
+    f.style.left = 20 + rand(60) + '%';
+    el.appendChild(f);
+    setTimeout(() => f.remove(), 700);
+  }
+  function waveDone(share) {
+    const r = st.run;
+    const b = battle;
+    damage(r, share);
+    if (r.hp <= 0 && owned('revive').length && !r.revived) { r.revived = true; r.hp = Math.round(r.maxHp * 0.3); toast('Second Wind! Your agents get back up.'); }
+    if (r.hp <= 0) return finishBattle(false);
+    b.wave += 1;
+    if (b.wave < b.waves.length) setTimeout(playWave, 350);
+    else finishBattle(true);
+  }
+  function skipBattle() {
+    const r = st.run;
+    const b = battle;
+    if (!b || b.done) return;
+    cancelAnimationFrame(b.timer);
+    const left = b.waves.length - b.wave;
+    for (let i = 0; i < left; i++) {
+      damage(r, Math.round(b.total / b.waves.length));
+      if (r.hp <= 0 && owned('revive').length && !r.revived) { r.revived = true; r.hp = Math.round(r.maxHp * 0.3); }
+      if (r.hp <= 0) break;
+    }
+    finishBattle(r.hp > 0);
+  }
+  function finishBattle(won) {
+    const r = st.run;
+    const b = battle;
+    b.done = true;
+    if (!won) return endRun(false);
+    r.battles += 1;
+    if (b.node.type === 'boss') return endRun(true);
+    let gain = b.node.type === 'elite' ? 40 + rand(11) : 18 + rand(9);
+    owned('perClass').filter(c => c.perClass[2] === 'packets').forEach(c => { gain += c.perClass[1] * classCount(c.perClass[0]); });
+    let healed = owned('heal').reduce((s, c) => s + c.heal, 0);
+    owned('perClass').filter(c => c.perClass[2] === 'heal').forEach(c => { healed += c.perClass[1] * classCount(c.perClass[0]); });
+    r.packets += gain;
+    heal(r, healed);
+    toast(`Victory! +${gain} Packets${healed ? ` · +${healed} HP` : ''}`);
+    setTimeout(() => cardReward(b.node.type === 'elite', `Victory · +${gain} Packets`), 500);
+  }
+
+  let offer = [];
+  let offerContext = null;
+  function cardReward(rareUp, subtitle, context = 'battle') {
+    offer = randomCards(3, rareUp);
+    offerContext = { rareUp, subtitle, context };
+    renderOffer();
+  }
+  function renderOffer() {
+    const r = st.run;
+    $('.dl-offer-title', root).textContent = offerContext.subtitle;
+    $('.dl-cards', root).innerHTML = offer.map((c, i) => `<div class="dl-card ${c.rarity}"><span class="rar">${RARITY[c.rarity][0]}</span>
+      <div class="ic"><img src="${asset(c.icon)}" alt=""></div><b>${escapeHtml(c.name)}</b><p>${c.text}</p>
+      <button class="btn small" type="button" data-dl-take="${i}">Select</button></div>`).join('');
+    $('.dl-picked', root).innerHTML = (r.cards.length ? r.cards : [null, null, null]).map(id => id ? `<span class="dl-slot"><img src="${asset(cardById[id].icon)}" alt="" title="${escapeHtml(cardById[id].name)}"></span>` : '<span class="dl-slot empty">+</span>').join('');
+    $('.dl-rerolls', root).textContent = `Attempts remaining: ${r.rerolls}`;
+    $('[data-act="dl-refresh"]', root).disabled = r.rerolls <= 0;
+    $('[data-act="dl-skip"]', root).textContent = offerContext.context === 'shop' ? 'Back' : 'Skip (+15 Packets)';
+    view('offer');
+  }
+  function refresh() {
+    const r = st.run;
+    if (r.rerolls <= 0) return;
+    const go = () => { r.rerolls -= 1; offer = randomCards(3, offerContext.rareUp, offer.map(c => c.id)); if (offer.length < 3) offer = randomCards(3, offerContext.rareUp); renderOffer(); };
+    if (st.skipRefreshNote) return go();
+    openPopup('Note', `<div class="content center"><div>Refreshing will remove these current skills and randomly re-roll other skills. Are you sure you want to continue?</div>
+      <label class="dl-check"><input type="checkbox" id="dl-noshow"> Don't show again</label>
+      <div style="display:flex;gap:12px"><button class="btn blue" type="button" id="dl-no">Cancel</button><button class="btn" type="button" id="dl-yes">Confirm</button></div></div>`, true);
+    $('#dl-no').onclick = closePopup;
+    $('#dl-yes').onclick = () => { st.skipRefreshNote = $('#dl-noshow').checked; closePopup(); go(); };
+  }
+
+  function room(type, node) {
+    const r = st.run;
+    let html = '';
+    if (type === 'rest') {
+      html = `<h2>Rest Stop</h2><p>A quiet corner between levels. Your agents can recover or train.</p>
+        <div class="dl-choices"><button class="dl-choice" type="button" data-dl-rest="heal"><b>Recover</b><span>Restore 30% HP (${Math.round(r.maxHp * 0.3)} HP)</span></button>
+        <button class="dl-choice" type="button" data-dl-rest="train"><b>Train</b><span>Pick 1 of 3 skills</span></button></div>`;
+    } else if (type === 'shop') {
+      const goods = randomCards(3);
+      node.goods = node.goods || goods.map(c => ({ id: c.id, price: { common: 45, rare: 75, epic: 120 }[c.rarity], sold: false }));
+      html = `<h2>Black Market</h2><p>A Midground fixer sells field mods for Packets.</p>
+        <div class="dl-shop">${node.goods.map((g, i) => { const c = cardById[g.id]; return `<button class="dl-card ${c.rarity} small" type="button" data-dl-buy="${i}" ${g.sold || r.packets < g.price ? 'disabled' : ''}>
+          <span class="rar">${RARITY[c.rarity][0]}</span><div class="ic"><img src="${asset(c.icon)}" alt=""></div><b>${escapeHtml(c.name)}</b><p>${c.text}</p>
+          <span class="price"><img src="${asset('Currency_Packet.png')}" alt="">${g.sold ? 'Sold' : g.price}</span></button>`; }).join('')}
+          <button class="dl-card small service" type="button" data-dl-buy="heal" ${r.packets < 40 || node.healed ? 'disabled' : ''}><div class="ic"><img src="${asset('skill_Passive_Heal.webp')}" alt=""></div><b>Field Repair</b><p>Restore 25 HP.</p><span class="price"><img src="${asset('Currency_Packet.png')}" alt="">${node.healed ? 'Sold' : 40}</span></button>
+          <button class="dl-card small service" type="button" data-dl-buy="reroll" ${r.packets < 30 ? 'disabled' : ''}><div class="ic"><img src="${asset('skill_Passive_Spread.webp')}" alt=""></div><b>Reroll Chip</b><p>+1 skill refresh.</p><span class="price"><img src="${asset('Currency_Packet.png')}" alt="">30</span></button></div>`;
+    } else if (type === 'event') {
+      node.event = node.event || pick(EVENTS);
+      const ev = node.event;
+      html = `<h2>${ev.title}</h2><p>${ev.text}</p><div class="dl-choices">${ev.choices.map(([label, can], i) => `<button class="dl-choice" type="button" data-dl-event="${i}" ${can(r) ? '' : 'disabled'}><b>${escapeHtml(label)}</b></button>`).join('')}</div>`;
+    }
+    $('.dl-room-body', root).innerHTML = html + `<div class="dl-room-foot"><button class="btn blue" type="button" data-act="dl-leave">Continue</button></div>`;
+    $('.dl-rhud', root).innerHTML = hud();
+    $('.dl-room-foot', root).hidden = type === 'event' || type === 'rest';
+    view('room');
+  }
+
+  function enter(id) {
+    const r = st.run;
+    if (!available().includes(id)) return;
+    r.pos = id;
+    r.visited.push(id);
+    const node = r.map[id];
+    if (node.type === 'battle' || node.type === 'elite' || node.type === 'boss') startBattle(node);
+    else room(node.type, node);
+  }
+
+  function endRun(won) {
+    const r = st.run;
+    const lv = r.level;
+    const first = won && !st.firstClear[lv];
+    if (won) { st.best = Math.max(st.best, lv); st.firstClear[lv] = true; }
+    const floors = r.visited.length;
+    const rewards = won ? [['exodium', 600 + lv * 60], ['packet', 500000 + lv * 30000], ...(first ? [['shardXA', 1 + Math.floor(lv / 5)], ['oracle', 300 + lv * 30]] : [])]
+      : [['exodium', Math.round((600 + lv * 60) * floors / 10)], ['packet', Math.round((500000 + lv * 30000) * floors / 10)]];
+    const cards = r.cards.map(id => `<img class="dl-mini" src="${asset(cardById[id].icon)}" alt="" title="${escapeHtml(cardById[id].name)}">`).join('');
+    showResult({
+      title: won ? 'DEEP LAYER CLEARED' : 'RUN OVER', stampText: won ? 'VICTORY' : 'DEFEAT', stampClass: won ? 'win' : 'lose', tone: won ? 'win' : 'lose',
+      line: `Difficulty ${lv} · Floors ${floors}/${ROWS + 1} · HP ${r.hp}/${r.maxHp}${first ? ' · <span class="hl">First Clear!</span>' : ''}
+        <div class="dl-endcards">${cards}</div><div style="display:flex;justify-content:center;margin-top:10px">${itemsHtml(rewards)}</div>`,
+      onOk: () => { st.run = null; if (won && st.level < 20) st.level = Math.min(20, st.best + 1); renderEntry(); }
+    });
+  }
+
+  root.addEventListener('click', e => {
+    const t = e.target.closest('button');
+    if (!t) return;
+    const d = t.dataset;
+    const r = st.run;
+    if (d.dlDial) { st.level = Math.max(1, Math.min(20, st.level + Number(d.dlDial))); renderEntry(); }
+    else if (d.act === 'dl-start') openSetup({
+      team: st.team, hud: `Deep Layer · Difficulty ${st.level}`, target: { image: BOSS.thumb, name: 'Deep Layer', note: 'Midground → Underground → Deep Layer. HP carries over between battles.' },
+      recoText: 'Your team carries through the whole run', goLabel: '▸▸ Start Run', onGo: team => startRun(team)
+    });
+    else if (d.dlNode) enter(d.dlNode);
+    else if (d.dlCard !== undefined) { const c = cardById[r.cards[Number(d.dlCard)]]; openPopup('Skill Details', `<div class="content center"><div class="dl-card ${c.rarity} small" style="pointer-events:none"><span class="rar">${RARITY[c.rarity][0]}</span><div class="ic"><img src="${asset(c.icon)}" alt=""></div><b>${escapeHtml(c.name)}</b><p>${c.text}</p></div></div>`, true); }
+    else if (d.dlTake !== undefined) {
+      const c = offer[Number(d.dlTake)];
+      r.cards.push(c.id);
+      toast(`${c.name} acquired.`);
+      if (offerContext.context === 'shop') return;
+      renderMap();
+    }
+    else if (d.act === 'dl-refresh') refresh();
+    else if (d.act === 'dl-skip') { if (offerContext.context !== 'shop') r.packets += 15; renderMap(); }
+    else if (d.act === 'dl-skip-battle') skipBattle();
+    else if (d.act === 'dl-leave') renderMap();
+    else if (d.act === 'dl-abandon') confirmBox('Message', 'Abandon this run? Rewards are based on how deep you got.', () => endRun(false), 'Abandon');
+    else if (d.dlRest) {
+      if (d.dlRest === 'heal') { heal(r, Math.round(r.maxHp * 0.3)); toast('Your agents recover.'); renderMap(); }
+      else cardReward(false, 'Training · pick a skill', 'rest');
+    }
+    else if (d.dlBuy !== undefined) {
+      const node = r.map[r.pos];
+      if (d.dlBuy === 'heal') { r.packets -= 40; heal(r, 25); node.healed = true; }
+      else if (d.dlBuy === 'reroll') { r.packets -= 30; r.rerolls += 1; }
+      else { const g = node.goods[Number(d.dlBuy)]; r.packets -= g.price; g.sold = true; r.cards.push(g.id); toast(`${cardById[g.id].name} acquired.`); }
+      room('shop', node);
+    }
+    else if (d.dlEvent !== undefined) {
+      const node = r.map[r.pos];
+      const result = node.event.choices[Number(d.dlEvent)][2](r);
+      if (result === 'fight-elite') { node.type = 'elite'; return startBattle(node); }
+      if (r.hp <= 0) return endRun(false);
+      $('.dl-room-body', root).innerHTML = `<h2>${node.event.title}</h2><p>${result}</p><div class="dl-room-foot"><button class="btn blue" type="button" data-act="dl-leave">Continue</button></div>`;
+      $('.dl-rhud', root).innerHTML = hud();
+    }
+    else if (d.act === 'dl-help') openPopup('Deep Layer', `<div class="content prose"><p>Pick a team of five, then head down through Vierhaven: the Midground, the Underground, and the Deep Layer at the bottom.</p>
+      <p>Choose your path on the map. Battles and elites fight in waves; after each win, pick 1 of 3 skills. Rest stops, the Black Market and events help along the way.</p>
+      <p>HP carries over between battles. Reach the bottom and defeat the boss to clear the difficulty. Higher difficulties pay more, with a one-time First Clear bonus.</p></div>`);
+    else if (d.act === 'back') toast('Returns to the lobby.');
+  });
+
+  MODES.deeplayer = { show: () => { if (st.run) renderMap(); else renderEntry(); } };
 })();
 
 $$('.tabs-top button').forEach(b => { b.onclick = () => switchMode(b.dataset.mode); });
